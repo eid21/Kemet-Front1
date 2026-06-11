@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { navigationItems } from '../../data/navigationData.js';
 import LanguageSwitcher from './LanguageSwitcher.jsx';
+import KemetLogo from '../KemetLogo.jsx';
 
 export const Navbar = ({ 
   activeTab, 
@@ -12,6 +13,7 @@ export const Navbar = ({
   setCategoryFilter 
 }) => {
   const { t } = useTranslation();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
     <header className="NavbarHeader">
@@ -23,9 +25,7 @@ export const Navbar = ({
           window.scrollTo({ top: 0, behavior: 'smooth' }); 
         }}
       >
-        <div className="LogoBrandText" id="logo-id">
-          {t('hero.kemet_watermark', 'KEMET')}
-        </div>
+        <KemetLogo theme={theme} />
         <div className="LogoSubTagline">
           <a 
             href="https://www.dxbalpha.com/" 
@@ -39,7 +39,7 @@ export const Navbar = ({
       </div>
       
       <nav>
-        <ul className="NavigationList">
+        <ul className={`NavigationList ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
           {navigationItems.map((item) => {
             const key = item.label === 'About Us' ? 'about' : item.label.toLowerCase();
             return (
@@ -54,6 +54,7 @@ export const Navbar = ({
                     if (item.tab === 'CATALOG' && setCategoryFilter) {
                       setCategoryFilter('ALL');
                     }
+                    setIsMobileMenuOpen(false);
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
                   id={item.id}
@@ -67,6 +68,17 @@ export const Navbar = ({
       </nav>
 
       <div className="HeaderActions">
+        <button 
+          className="MobileMenuToggle" 
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle mobile menu"
+        >
+          {isMobileMenuOpen ? (
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          ) : (
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="5" x2="21" y2="5"></line><line x1="3" y1="19" x2="21" y2="19"></line></svg>
+          )}
+        </button>
         <LanguageSwitcher />
 
         <button 
@@ -76,19 +88,19 @@ export const Navbar = ({
           id="btn-theme-toggle"
         >
           {theme === 'dark' ? (
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="ThemeVectorIcon">
-              <circle cx="12" cy="12" r="5"></circle>
-              <line x1="12" y1="1" x2="12" y2="3"></line>
-              <line x1="12" y1="21" x2="12" y2="23"></line>
-              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-              <line x1="1" y1="12" x2="3" y2="12"></line>
-              <line x1="21" y1="12" x2="23" y2="12"></line>
-              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="ThemeVectorIcon">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2"></path>
+              <path d="M12 20v2"></path>
+              <path d="M4.93 4.93l1.41 1.41"></path>
+              <path d="M17.66 17.66l1.41 1.41"></path>
+              <path d="M2 12h2"></path>
+              <path d="M20 12h2"></path>
+              <path d="M6.34 17.66l-1.41 1.41"></path>
+              <path d="M19.07 4.93l-1.41 1.41"></path>
             </svg>
           ) : (
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="ThemeVectorIcon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="ThemeVectorIcon">
               <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
             </svg>
           )}

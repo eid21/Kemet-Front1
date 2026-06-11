@@ -2,29 +2,52 @@
   background-color: var(--bg-dark);
   color: var(--text-gray);
   position: relative;
-  border-top: 1px solid var(--border-color);
-  padding-top: 60px;
   font-family: var(--font-body);
+  overflow: hidden; /* For the background image */
 }
 
-.FooterTopGradient {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
-}
 
 .FooterLayoutContainer {
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 40px;
+  position: relative;
+  z-index: 1; /* Keep content above background image */
 }
 
+/* Top Banner */
+.FooterTopBanner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  margin-bottom: 60px;
+}
+
+.BannerLine {
+  flex-grow: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--primary) 50%, transparent);
+  opacity: 0.5;
+}
+
+.BannerText {
+  font-family: var(--font-heading);
+  color: var(--primary);
+  font-size: 1.25rem;
+  font-weight: 900;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.6), 0 2px 4px rgba(0,0,0,0.4);
+  white-space: nowrap;
+}
+
+/* Columns Grid */
 .FooterColumnsGrid {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  grid-template-columns: 1.5fr 1fr 1.2fr 1fr;
   gap: 50px;
   margin-bottom: 60px;
 }
@@ -47,40 +70,98 @@
 }
 
 .FooterBrandTag {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--text-dim);
+  font-size: 1rem;
+  font-weight: 800;
+  color: #ff9900;
   text-transform: uppercase;
   letter-spacing: 0.1em;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.FooterBrandTag:hover {
+  color: #cc7a00;
 }
 
 .FooterBrandDesc {
-  font-size: 0.95rem;
+  font-size: 1rem;
   line-height: 1.6;
-  color: var(--text-dim);
-  margin-bottom: 24px;
-}
-
-.FooterPillTags {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.FooterPill {
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  padding: 6px 14px;
-  border-radius: 50px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border-color);
   color: var(--text-gray);
+  margin-bottom: 30px;
+  max-width: 90%;
 }
 
+/* Features List in Brand Column */
+.FooterFeaturesList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 30px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.FooterFeaturesList li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.FeatureIcon {
+  font-size: 1.2rem;
+  width: 24px;
+  text-align: center;
+  color: #25D366; /* Green checkmark */
+  font-weight: bold;
+}
+
+.FeatureText {
+  display: flex;
+  flex-direction: column;
+}
+
+.FeatureText strong {
+  color: var(--text-white); /* Was #0056b3 */
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.FeatureText span {
+  color: var(--text-gray);
+  font-size: 0.9rem;
+}
+
+/* Socials */
+.FooterSocials {
+  display: flex;
+  gap: 12px;
+}
+
+.SocialIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.SocialIcon:hover {
+  background-color: var(--primary);
+  color: var(--bg-dark);
+  border-color: var(--primary);
+}
+
+/* Nav & Contact Columns */
 .FooterColTitle {
   font-family: var(--font-heading);
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 700;
   color: var(--text-white);
   margin-bottom: 24px;
@@ -101,18 +182,18 @@
   color: var(--text-gray);
   text-decoration: none;
   transition: var(--transition-smooth);
-  font-size: 0.95rem;
+  font-size: 1rem;
 }
 
 .FooterLinkList a:hover {
-  color: var(--primary);
+  color: var(--text-white);
   transform: translateX(4px);
 }
 
 .FooterContactList {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 0 0 24px 0;
   display: flex;
   flex-direction: column;
   gap: 18px;
@@ -124,13 +205,13 @@
   gap: 12px;
   font-size: 0.95rem;
   line-height: 1.5;
+  color: var(--text-white);
 }
 
 .FooterContactList svg {
   width: 18px;
   height: 18px;
   flex-shrink: 0;
-  color: var(--primary);
   margin-top: 2px;
 }
 
@@ -144,6 +225,33 @@
   color: var(--text-white);
 }
 
+.MapButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background-color: rgba(255, 153, 0, 0.1);
+  border: 1px solid #ff9900;
+  color: #ff9900;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 800;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  width: fit-content;
+}
+
+.MapButton svg {
+  width: 16px;
+  height: 16px;
+}
+
+.MapButton:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: var(--primary);
+}
+
+/* Status Widgets */
 .FooterStatusWidgets {
   display: flex;
   flex-direction: column;
@@ -157,8 +265,8 @@
 }
 
 .Dot {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   margin-top: 6px;
   flex-shrink: 0;
@@ -174,30 +282,63 @@
   box-shadow: 0 0 10px rgba(255, 94, 0, 0.4);
 }
 
+.Dot.Red {
+  background-color: #ff3333;
+  box-shadow: 0 0 10px rgba(255, 51, 51, 0.4);
+}
+
 .WidgetText {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
+  color: var(--text-gray);
 }
 
 .WidgetText strong {
   color: var(--text-white);
-  font-size: 0.95rem;
+  font-size: 1rem;
 }
 
 .WidgetText .Closed {
-  color: var(--accent-orange);
-  font-weight: 600;
+  color: #ff3333;
+  font-weight: 700;
 }
 
-.FooterBottomRow {
+/* Stats Row */
+.FooterStatsRow {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 30px 0;
-  border-top: 1px solid var(--border-color);
-  font-size: 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  margin-bottom: 30px;
+}
+
+.StatItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.StatIcon {
+  font-size: 1.8rem;
+}
+
+.StatText {
+  color: var(--text-white);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* Bottom Row */
+.FooterBottomRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 30px;
+  font-size: 0.95rem;
   color: var(--text-dim);
 }
 
@@ -210,7 +351,7 @@
 }
 
 .FooterLegalLinks a {
-  color: var(--text-dim);
+  color: var(--text-gray);
   text-decoration: none;
   transition: var(--transition-smooth);
 }
@@ -224,20 +365,35 @@
   transform: translateX(-4px);
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1200px) {
   .FooterColumnsGrid {
     grid-template-columns: 1fr 1fr;
+  }
+  .FooterBgImage {
+    opacity: 0.1; /* Less visible on smaller screens */
   }
 }
 
 @media (max-width: 768px) {
+  .FooterTopBanner {
+    flex-direction: column;
+    text-align: center;
+  }
   .FooterColumnsGrid {
     grid-template-columns: 1fr;
     gap: 40px;
+  }
+  .FooterStatsRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
   }
   .FooterBottomRow {
     flex-direction: column;
     gap: 16px;
     text-align: center;
+  }
+  .FooterBgImage {
+    display: none;
   }
 }

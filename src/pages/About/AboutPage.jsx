@@ -1,13 +1,21 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import useApi from '../../hooks/useApi.js';
+import { getAboutUs } from '../../services/apiServices.js';
 
 export const AboutPage = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+
+  const { data: apiAbout } = useApi(
+    () => getAboutUs(),
+    null,
+    [i18n.language]
+  );
 
   return (
     <section className="CompanyHistorySection" id="about" style={{ paddingTop: '140px' }}>
       <div className="AboutBannerFrame">
-        <div className="AboutBannerAsset" style={{ backgroundImage: "url('/about-mining.png')" }}></div>
+        <div className="AboutBannerAsset" style={{ backgroundImage: `url('/about-new.jpg')` }}></div>
         <div className="AboutBannerVignette"></div>
         <div className="AboutBannerDetails">
           <div className="AboutBannerSegmentBadge">
@@ -15,9 +23,9 @@ export const AboutPage = () => {
             <span className="BadgeLabelText">{t('about.badge')}</span>
             <span className="BadgeAccentLine"></span>
           </div>
-          <h1 className="AboutBannerMainHeadline">{t('about.heading')}</h1>
+          <h1 className="AboutBannerMainHeadline">{apiAbout?.title || t('about.heading')}</h1>
           <p className="AboutBannerSubHeadline">
-            {t('about.subheading')}
+            {apiAbout?.subtitle || t('about.subheading')}
           </p>
         </div>
       </div>
@@ -29,17 +37,23 @@ export const AboutPage = () => {
               <span className="SubheadingAccentLine"></span>
               <span className="SubheadingLabel">{t('about.history_badge')}</span>
             </div>
-            <h2 className="AboutHistoryHeadline">{t('about.history_heading_1')}<br /><span>{t('about.history_heading_2')}</span></h2>
+            <h2 className="AboutHistoryHeadline">{apiAbout?.mission_title || t('about.history_heading_1')}<br /><span>{t('about.history_heading_2')}</span></h2>
             
-            <p className="AboutHistoryParagraph lead-paragraph">
-              {t('about.history_p1')}
-            </p>
-            <p className="AboutHistoryParagraph">
-              {t('about.history_p2')}
-            </p>
-            <p className="AboutHistoryParagraph">
-              {t('about.history_p3')}
-            </p>
+            {apiAbout?.content ? (
+              <div className="AboutHistoryParagraph lead-paragraph" dangerouslySetInnerHTML={{ __html: apiAbout.content }} />
+            ) : (
+              <>
+                <p className="AboutHistoryParagraph lead-paragraph">
+                  {t('about.history_p1')}
+                </p>
+                <p className="AboutHistoryParagraph">
+                  {t('about.history_p2')}
+                </p>
+                <p className="AboutHistoryParagraph">
+                  {t('about.history_p3')}
+                </p>
+              </>
+            )}
           </div>
 
           <div className="AboutHighlightsGridColumn">

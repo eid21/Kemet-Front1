@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { postConsultation } from '../../services/apiServices.js';
+
 export const DetailsPage = ({ item, setSelectedProduct, downloadSpecPDF }) => {
   const { t } = useTranslation();
   const [selectedDetailImage, setSelectedDetailImage] = useState(item.image);
@@ -20,9 +22,21 @@ export const DetailsPage = ({ item, setSelectedProduct, downloadSpecPDF }) => {
     setClientMessage('');
   }, [item]);
 
-  const handleInquirySubmission = (e) => {
+  const handleInquirySubmission = async (e) => {
     e.preventDefault();
-    setClientInquirySent(true);
+    try {
+      await postConsultation({
+        name: clientName,
+        email: clientEmail,
+        phone: clientPhone,
+        message: clientMessage,
+        equipment_id: item.id
+      });
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setClientInquirySent(true);
+    }
   };
 
   const copyLinkToClipboard = async (url) => {
@@ -65,7 +79,7 @@ export const DetailsPage = ({ item, setSelectedProduct, downloadSpecPDF }) => {
       <div className="ProductSpecsBannerBlock">
         <div
           className="ProductSpecsBannerAsset"
-          style={{ backgroundImage: `url(${item.image})` }}
+          style={{ backgroundColor: 'var(--bg-dark)' }}
         />
         <div className="ProductSpecsBannerVignette" />
         <div className="ProductSpecsBannerDetailsPanel">

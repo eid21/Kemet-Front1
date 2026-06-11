@@ -1,0 +1,397 @@
+{
+  "info": {
+    "_postman_id": "bd3f5fb7-5d6a-45dd-9960-15e7f3555648",
+    "name": "Kemet Public API",
+    "description": "Professional Postman collection for the **Kemet** heavy machinery public REST API (Laravel 12).\n\n## Base URL\n`{{base_url}}` — default: `http://127.0.0.1:8000/api`\n\n## Authentication\nNo authentication required. All endpoints are public.\n\n## Localization\nSupported locales: `en`, `ar`, `fr`, `es`, `ru`\n\nSet locale via:\n- Header: `X-Locale: en`\n- Query param: `?lang=en`\n\n## Response Envelope\nAll responses follow this structure:\n```json\n{\n  \"code\": 200,\n  \"message\": \"Human-readable status message\",\n  \"data\": {},\n  \"pagination\": {}\n}\n```\n\n`pagination` is only included on paginated endpoints (FAQ).\n\n## Error Codes\n| Code | Description |\n|------|-------------|\n| 200 | Success |\n| 201 | Created (contact, consultation) |\n| 404 | Resource not found |\n| 422 | Validation error — `data` contains field errors |\n| 500 | Server error |\n\n## Setup\n1. Import `Kemet-API.postman_collection.json`\n2. Import `Kemet-Local.postman_environment.json`\n3. Run `php artisan serve` and ensure DB is seeded: `php artisan migrate --seed`\n4. Select the **Kemet — Local** environment\n\nGenerated: 2026-06-11 12:09:19 UTC",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "43687726"
+  },
+  "item": [
+    {
+      "name": "Settings & Content",
+      "item": [
+        {
+          "name": "Get Settings",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "X-Locale",
+                "value": "{{locale}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/settings",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "settings"
+              ]
+            },
+            "description": "Returns global site settings: branding, contact info, social links, SEO meta, logo, and favicon."
+          }
+        },
+        {
+          "name": "Get About Us",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "X-Locale",
+                "value": "{{locale}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/about-us",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "about-us"
+              ]
+            },
+            "description": "Returns the About page content (HTML description, banner, image, last updated date)."
+          }
+        },
+        {
+          "name": "Get Privacy Policy",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "X-Locale",
+                "value": "{{locale}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/privacy",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "privacy"
+              ]
+            },
+            "description": "Returns privacy policy page content."
+          }
+        },
+        {
+          "name": "Get Terms & Conditions",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "X-Locale",
+                "value": "{{locale}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/terms",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "terms"
+              ]
+            },
+            "description": "Returns terms and conditions page content."
+          }
+        },
+        {
+          "name": "Get FAQs",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "X-Locale",
+                "value": "{{locale}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/faq?page=1&per_page=10",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "faq"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number (default: 1)"
+                },
+                {
+                  "key": "per_page",
+                  "value": "10",
+                  "description": "Items per page, max 100 (default: 10)"
+                }
+              ]
+            },
+            "description": "Returns paginated FAQ list. Supports `page` and `per_page` query parameters."
+          }
+        },
+        {
+          "name": "Get Banners",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "X-Locale",
+                "value": "{{locale}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/banners",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "banners"
+              ]
+            },
+            "description": "Returns active homepage banners. Returns empty array when no banners are configured."
+          }
+        },
+        {
+          "name": "Get Catalog PDF",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "X-Locale",
+                "value": "{{locale}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/catalog",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "catalog"
+              ]
+            },
+            "description": "Returns the downloadable product catalog file URL. Returns empty data when no catalog is uploaded."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Categories",
+      "item": [
+        {
+          "name": "List Categories",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "X-Locale",
+                "value": "{{locale}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/categories",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "categories"
+              ]
+            },
+            "description": "Returns all active equipment categories with product counts."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Equipments",
+      "item": [
+        {
+          "name": "Get Catalog Stats",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "X-Locale",
+                "value": "{{locale}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/equipments/stats",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "equipments",
+                "stats"
+              ]
+            },
+            "description": "Returns aggregate catalog statistics: total models, categories count, featured units, and in-stock count."
+          }
+        },
+        {
+          "name": "List Equipments",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "X-Locale",
+                "value": "{{locale}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/equipments",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "equipments"
+              ]
+            },
+            "description": "Returns all active equipment. Supports optional filters via query parameters."
+          }
+        },
+        {
+          "name": "List Equipments — Featured Loaders",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "X-Locale",
+                "value": "{{locale}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/equipments?category_slug=loaders&featured=1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "equipments"
+              ],
+              "query": [
+                {
+                  "key": "category_slug",
+                  "value": "loaders",
+                  "description": "Filter by category slug (e.g. loaders, excavators)"
+                },
+                {
+                  "key": "featured",
+                  "value": "1",
+                  "description": "Filter featured equipment: 1 or 0"
+                }
+              ]
+            },
+            "description": "Example filtered list: featured loaders only."
+          }
+        },
+        {
+          "name": "List Equipments — Search",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "X-Locale",
+                "value": "{{locale}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/equipments?search=excavator",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "equipments"
+              ],
+              "query": [
+                {
+                  "key": "search",
+                  "value": "excavator",
+                  "description": "Search name, description, slug, series, or SKU"
+                }
+              ]
+            },
+            "description": "Example search across name, description, slug, series, and SKU."
+          }
+        },
+        {
+          "name": "Get Equipment by Slug",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "X-Locale",
+                "value": "{{locale}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/equipments/{{sample_equipment_slug}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "equipments",
+                "{{sample_equipment_slug}}"
+              ]
+            },
+            "description": "Returns full equipment details including features, highlights, specifications, images, and category."
+          }
+        }
+      ]
+    }
+  ]
+}

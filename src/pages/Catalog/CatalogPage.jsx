@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { fleetList } from '../../data/fleetData.js';
+import useApi from '../../hooks/useApi.js';
+import { getEquipments, getCategories, getEquipmentStats } from '../../services/apiServices.js';
+import { mapApiEquipmentsToFleet, mapApiCategories } from '../../utils/dataMappers.js';
 
 export const CatalogPage = ({ 
   activeCategoryFilter, 
@@ -10,13 +13,35 @@ export const CatalogPage = ({
   setActiveTab, 
   downloadSpecPDF 
 }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategoryFilters, setSelectedCategoryFilters] = useState([]);
   const [selectedYearFilter, setSelectedYearFilter] = useState('ALL');
   const [drawerOpen, setDrawerOpen] = useState(false);
 
-  let filteredFleet = fleetList;
+  // Fetch equipments from API with fallback
+  const { data: apiEquipments } = useApi(
+    () => getEquipments(),
+    null,
+    [i18n.language]
+  );
+  const equipmentList = apiEquipments ? mapApiEquipmentsToFleet(apiEquipments) : fleetList;
+
+  // Fetch categories from API with fallback
+  const { data: apiCategories } = useApi(
+    () => getCategories(),
+    null,
+    [i18n.language]
+  );
+
+  // Fetch stats from API
+  const { data: apiStats } = useApi(
+    () => getEquipmentStats(),
+    null,
+    [i18n.language]
+  );
+
+  let filteredFleet = equipmentList;
 
   if (searchQuery.trim()) {
     const searchString = searchQuery.toLowerCase();
@@ -60,14 +85,16 @@ export const CatalogPage = ({
 
   const isFilterActive = searchQuery.trim() || selectedCategoryFilters.length > 0 || selectedYearFilter !== 'ALL';
 
-  const categoryOptions = ['EXCAVATORS', 'LOADERS', 'TRACTORS', 'TRUCKS', 'GRADERS'];
+  const categoryOptions = apiCategories
+    ? mapApiCategories(apiCategories).map(c => c.name)
+    : ['EXCAVATORS', 'LOADERS', 'TRACTORS', 'TRUCKS', 'GRADERS'];
   const manufacturingYears = ['ALL', '2026', '2025', '2024', '2023'];
 
   return (
     <div className="CatalogPageWrapper">
       <section className="CatalogBannerBlock">
         <div className="CatalogBannerMediaFrame">
-          <div className="CatalogBannerAsset" style={{ backgroundImage: `url('/58b02da8-096c-4b50-a14f-052b62df8d9d.png')` }}></div>
+          <div className="CatalogBannerAsset" style={{ backgroundImage: `url('/catalog-new.jpg')` }}></div>
           <div className="CatalogBannerVignette"></div>
         </div>
         <div className="CatalogBannerInfoPanel">
@@ -100,7 +127,7 @@ export const CatalogPage = ({
                 }, 100);
               }
             }}>
-              {t('catalog.request_quote')} &rarr;
+              GET A CUSTOM QUOTE &rarr;
             </button>
           </div>
         </div>
@@ -112,7 +139,7 @@ export const CatalogPage = ({
                 <path className="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
                 <path className="circle-fill" strokeDasharray="80, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
               </svg>
-              <span className="catalog-stat-value">6</span>
+              <span className="catalog-stat-value">{apiStats?.total_models || equipmentList.length}</span>
             </div>
             <span className="catalog-stat-label">{t('catalog.total_models')}</span>
           </div>
@@ -122,7 +149,7 @@ export const CatalogPage = ({
                 <path className="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
                 <path className="circle-fill" strokeDasharray="100, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
               </svg>
-              <span className="catalog-stat-value">5</span>
+              <span className="catalog-stat-value">{apiStats?.categories_count || categoryOptions.length}</span>
             </div>
             <span className="catalog-stat-label">{t('catalog.categories')}</span>
           </div>
@@ -132,7 +159,7 @@ export const CatalogPage = ({
                 <path className="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
                 <path className="circle-fill" strokeDasharray="75, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
               </svg>
-              <span className="catalog-stat-value">5</span>
+              <span className="catalog-stat-value">{apiStats?.new_units || equipmentList.filter(e => e.year === '2026').length}</span>
             </div>
             <span className="catalog-stat-label">{t('catalog.new_units')}</span>
           </div>
@@ -142,7 +169,7 @@ export const CatalogPage = ({
                 <path className="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
                 <path className="circle-fill" strokeDasharray="90, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
               </svg>
-              <span className="catalog-stat-value">5</span>
+              <span className="catalog-stat-value">{apiStats?.active_stock || equipmentList.filter(e => e.status === 'In Stock').length}</span>
               <span className="telemetry-pulse"></span>
             </div>
             <span className="catalog-stat-label">{t('catalog.active_stock')}</span>
@@ -213,7 +240,7 @@ export const CatalogPage = ({
               <span className="csb-section-label">{t('catalog.category')}</span>
               <div className="csb-check-list">
                 {categoryOptions.map(cat => {
-                  const count = fleetList.filter(i => i.category === cat).length;
+                  const count = equipmentList.filter(i => i.category === cat).length;
                   const checked = selectedCategoryFilters.includes(cat);
                   return (
                     <label key={cat} className={`csb-check-item ${checked ? 'checked' : ''}`}>
@@ -267,18 +294,25 @@ export const CatalogPage = ({
                 <div className="csb-avail-item">
                   <span className="csb-avail-dot green"></span>
                   <span className="csb-avail-label">{t('catalog.in_stock')}</span>
-                  <span className="csb-check-count">{fleetList.filter(i => i.status === 'In Stock').length}</span>
+                  <span className="csb-check-count">{equipmentList.filter(i => i.status === 'In Stock').length}</span>
                 </div>
                 <div className="csb-avail-item">
                   <span className="csb-avail-dot orange"></span>
                   <span className="csb-avail-label">{t('catalog.available')}</span>
-                  <span className="csb-check-count">{fleetList.filter(i => i.status === 'Available').length}</span>
+                  <span className="csb-check-count">{equipmentList.filter(i => i.status === 'Available').length}</span>
                 </div>
               </div>
             </div>
           </aside>
 
           <div className="CatalogFleetInventoryGrid">
+            <div className="PremiumBanner" style={{ textAlign: 'center', margin: '0 0 30px 0', padding: '20px', backgroundColor: 'rgba(255, 153, 0, 0.05)', border: '1px solid rgba(255, 153, 0, 0.2)', borderRadius: '8px', color: 'var(--text-white)' }}>
+              <div style={{ color: 'var(--accent-orange)', marginBottom: '8px' }}>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</div>
+              <h3 style={{ margin: '0 0 8px 0', fontSize: '1.2rem', fontWeight: '800' }}>Premium Heavy Machinery Collection</h3>
+              <p style={{ margin: 0, fontSize: '0.95rem', color: 'var(--text-gray)' }}>Built for Construction • Mining • Infrastructure</p>
+              <div style={{ color: 'var(--accent-orange)', marginTop: '8px' }}>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</div>
+            </div>
+
             <div className="CatalogInventoryGridHeader">
               <h2 className="CatalogInventoryGridTitle">
                 {selectedCategoryFilters.length > 0
@@ -303,7 +337,6 @@ export const CatalogPage = ({
                 {filteredFleet.map((vehicle) => (
                   <div key={vehicle.id} className="CatalogVehicleInventoryCard">
                     <div className="InventoryCardMediaViewport">
-                      <span className="InventoryCardStockBadge">{vehicle.status === 'In Stock' ? t('catalog.in_stock') : t('catalog.available')}</span>
                       <img src={vehicle.image} alt={vehicle.name} className="InventoryCardAsset" />
                       <div className="InventoryCardMediaOverlay"></div>
                     </div>
@@ -327,7 +360,13 @@ export const CatalogPage = ({
                           const specValueKey = spec.value.toLowerCase().replace(/[\s\(\)\/]+/g, '_').replace(/_+$/, '');
                           return (
                             <div key={index} className="InventoryCardQuickSpecItem">
-                              <span className="spec-label">{t(`specs.labels.${specLabelKey}`, { defaultValue: spec.label })}</span>
+                              <span className="spec-label">
+                                {spec.label.toLowerCase().includes('payload') || spec.label.toLowerCase().includes('operating weight') 
+                                  ? '⚖ Payload' 
+                                  : spec.label.toLowerCase().includes('engine') 
+                                    ? '⚙ Engine' 
+                                    : t(`specs.labels.${specLabelKey}`, { defaultValue: spec.label })}
+                              </span>
                               <span className="spec-value">{t(`specs.values.${specValueKey}`, { defaultValue: spec.value })}</span>
                             </div>
                           );

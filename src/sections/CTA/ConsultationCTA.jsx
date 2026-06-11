@@ -22,7 +22,7 @@ export const ConsultationCTA = ({
 
   return (
     <section className="ConsultationCTASection" id="contact">
-      <div className="ConsultationCTABackground" style={{ backgroundImage: `url('/hero-bg-3.png')` }}></div>
+      <div className="ConsultationCTABackground" style={{ backgroundImage: `url('/e1585f91-87ab-4149-b8b6-1b7f88c5f1e7.png')` }}></div>
       <div className="ConsultationCTAOverlay"></div>
       <div className="ConsultationLayoutContainer">
         <div className="ConsultationMainPanel">

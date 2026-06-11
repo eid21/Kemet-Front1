@@ -1,6 +1,5 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import Slideshow from '../../components/Card/Slideshow.jsx';
 
 export const CategoryShowcase = () => {
   const { t } = useTranslation();
@@ -38,8 +37,7 @@ export const CategoryShowcase = () => {
         <div className="ShowcaseGridLayout">
           <div className="FleetCategoryCard" id="card-excavators">
             <div className="CardMediaViewport">
-              <span className="StockStatusBadge">🟢 {t('showcase.available')}</span>
-              <Slideshow images={['/excavator.png', '/58b02da8-096c-4b50-a14f-052b62df8d9d.png', '/549f62ea-492c-4b77-80e1-baba3f682a09.png']} />
+              <img src="/a87db3e6-167b-4cb8-8774-7159388a521e.png" alt="Excavator" className="CardVehicleAsset" />
             </div>
             <div className="CardSpecificationContent">
               <h3 className="CardVehicleHeading">{t('showcase.excavators_title')}</h3>
@@ -58,8 +56,7 @@ export const CategoryShowcase = () => {
 
           <div className="FleetCategoryCard" id="card-loaders">
             <div className="CardMediaViewport">
-              <span className="StockStatusBadge">🟢 {t('showcase.available')}</span>
-              <Slideshow images={['/loader.png', '/kl950-loader.jpg', '/kb880-backhoe.jpg']} />
+              <img src="/49c6df76-530e-409d-a3d5-923cc1a96cb3.png" alt="Loader" className="CardVehicleAsset" />
             </div>
             <div className="CardSpecificationContent">
               <h3 className="CardVehicleHeading">{t('showcase.loaders_title')}</h3>
@@ -78,8 +75,7 @@ export const CategoryShowcase = () => {
 
           <div className="FleetCategoryCard" id="card-tractors">
             <div className="CardMediaViewport">
-              <span className="StockStatusBadge">🟢 {t('showcase.available')}</span>
-              <Slideshow images={['/tractor.png', '/ar-tractor-1.jpg', '/ar-tractor-2.jpg']} />
+              <img src="/b5b3107c-92a0-4d8e-b337-7ca794dc5668.png" alt="Tractor" className="CardVehicleAsset" />
             </div>
             <div className="CardSpecificationContent">
               <h3 className="CardVehicleHeading">{t('showcase.tractors_title')}</h3>
@@ -98,8 +94,7 @@ export const CategoryShowcase = () => {
 
           <div className="FleetCategoryCard" id="card-trucks">
             <div className="CardMediaViewport">
-              <span className="StockStatusBadge">🟢 {t('showcase.available')}</span>
-              <Slideshow images={['/truck.png', '/km450-truck.jpg', '/ar-tractor-3.jpg']} />
+              <img src="/983b9ffe-f2aa-499a-8b93-26222d25fa8c.png" alt="Truck" className="CardVehicleAsset" />
             </div>
             <div className="CardSpecificationContent">
               <h3 className="CardVehicleHeading">{t('showcase.trucks_title')}</h3>

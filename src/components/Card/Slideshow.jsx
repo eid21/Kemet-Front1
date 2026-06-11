@@ -4,11 +4,7 @@ export const Slideshow = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    if (!images || images.length === 0) return;
-    const slideshowTimer = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 3000);
-    return () => clearInterval(slideshowTimer);
+    // Disabled slideshow rotation for categories
   }, [images]);
 
   if (!images || images.length === 0) return null;

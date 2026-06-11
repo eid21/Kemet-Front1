@@ -1,14 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import useApi from '../../hooks/useApi.js';
+import { getBanners } from '../../services/apiServices.js';
 
 export const Hero = ({ setActiveTab, setCategoryFilter }) => {
-  const { t } = useTranslation();
-  const slideshowAssets = [
-    '/hero-bg-new.jpg',
-    '/hero-bg.png',
-    '/hero-bg-2.png',
-    '/hero-bg-3.png'
+  const { t, i18n } = useTranslation();
+  
+  const { data: apiBanners } = useApi(
+    () => getBanners(),
+    null,
+    [i18n.language]
+  );
+
+  const defaultAssets = [
+    '/e8b355cf-0bc2-46a5-b04d-df9c8c91c2e1.png',
+    '/cb199604-395a-4c2b-880b-886c2ddd3ba7.png',
+    '/19cd5b10-5085-4f4d-8707-b583f70539be.png'
   ];
+
+  // If API returns banners, use their image URLs, else use defaults
+  const slideshowAssets = apiBanners && apiBanners.length > 0 
+    ? apiBanners.map(b => b.image_url || b.image || b) 
+    : defaultAssets;
 
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
 
@@ -33,9 +46,12 @@ export const Hero = ({ setActiveTab, setCategoryFilter }) => {
       <div className="HeroVignetteOverlay"></div>
 
       <div className="HeroDetailsPanel">
-        <div className="HeroSegmentBadge fade-up-reveal speed-1">
-          <span className="BadgeAccentLine"></span>
-          <span className="BadgeLabelText">{t('hero.badge')}</span>
+        <div className="HeroSectorBadges fade-up-reveal speed-1">
+          <span className="SectorBadge">Construction</span>
+          <span className="SectorBadgeDot">•</span>
+          <span className="SectorBadge">Mining</span>
+          <span className="SectorBadgeDot">•</span>
+          <span className="SectorBadge">Agriculture</span>
         </div>
         
         <h1 className="HeroCoreHeadline">
@@ -71,6 +87,7 @@ export const Hero = ({ setActiveTab, setCategoryFilter }) => {
             {t('hero.btn_catalog')}
           </button>
         </div>
+      
       </div>
 
       <div className="HeroKeyMetricsPanel">

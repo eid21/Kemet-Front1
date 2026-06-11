@@ -1,10 +1,10 @@
 {
   "hero": {
-    "badge": "Construction • Mining • Industrial",
+    "badge": "Construction • Mining • Agriculture",
     "headline_1": "Powering",
-    "headline_2": "The Toughest",
+    "headline_2": "The World's Toughest",
     "headline_3": "Projects",
-    "body": "KEMET heavy machinery is engineered for operators who refuse to compromise — delivering raw power, precision control, and unmatched reliability across the GCC and beyond.",
+    "body": "KEMET heavy machinery is engineered for operators who refuse to compromise — delivering exceptional power, precision, and reliability for projects across the world.",
     "btn_browse": "Browse Equipment",
     "btn_catalog": "View Catalog",
     "kemet_watermark": "KEMET",
@@ -45,7 +45,18 @@
     "contact_title": "Contact Us",
     "status_title": "Operational Status",
     "copyright": "Copyright © {{year}} KEMET Heavy Machinery.",
-    "slogan": "Built Without Compromise."
+    "slogan": "Built Without Compromise.",
+    "top_banner": "TRUSTED PARTNER FOR HEAVY MACHINERY SOLUTIONS WORLDWIDE",
+    "feature_1": "Global Shipping",
+    "feature_2": "Genuine Spare Parts",
+    "feature_3": "Expert Technical Support",
+    "address": "Dubai Airport Building, Office 104, Port Said Area, Dubai, UAE",
+    "view_map": "View on Google Maps",
+    "hq_title": "Dubai HQ Dispatch",
+    "hq_time": "Mon - Sat: 9:00 AM - 6:00 PM",
+    "sunday_closed": "Sunday Closed",
+    "gcc_fleet": "GCC Service Fleet",
+    "dispatch_active": "24/7 Emergency Dispatch Active"
   },
   "advantages": {
     "badge": "Why Kemet",
@@ -65,8 +76,8 @@
   },
   "showcase": {
     "badge": "Browse by Type",
-    "title_line1": "Machinery",
-    "title_line2": "Categories",
+    "title_line1": "Explore Our",
+    "title_line2": "Machines",
     "all_btn": "All Categories",
     "view_range": "View Range",
     "available": "Available Now",

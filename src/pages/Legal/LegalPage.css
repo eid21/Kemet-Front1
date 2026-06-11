@@ -1,0 +1,74 @@
+.LegalPageSection {
+  background-color: var(--bg-main);
+  min-height: 100vh;
+  padding-bottom: 80px;
+}
+
+.LegalContainer {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.LegalHeader {
+  text-align: center;
+  margin-bottom: 50px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 30px;
+}
+
+.LegalHeader h1 {
+  font-size: 3rem;
+  color: var(--text-white);
+  margin-bottom: 15px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.LegalHeader p {
+  color: var(--text-gray);
+  font-size: 1rem;
+}
+
+.LegalContent {
+  background-color: var(--bg-card);
+  padding: 40px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  color: var(--text-gray);
+  line-height: 1.8;
+  font-size: 1.05rem;
+}
+
+.LegalContent h1,
+.LegalContent h2,
+.LegalContent h3 {
+  color: var(--text-white);
+  margin-top: 30px;
+  margin-bottom: 15px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.LegalContent h2 {
+  font-size: 1.5rem;
+}
+
+.LegalContent p {
+  margin-bottom: 20px;
+}
+
+.LegalContent ul,
+.LegalContent ol {
+  margin-bottom: 20px;
+  padding-left: 20px;
+}
+
+.LegalContent li {
+  margin-bottom: 10px;
+}
+
+.LegalLoading {
+  text-align: center;
+  padding: 40px;
+  color: var(--text-gray);
+  font-size: 1.2rem;
+}

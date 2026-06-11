@@ -1,0 +1,97 @@
+.FAQPageSection {
+  background-color: var(--bg-main);
+  min-height: 100vh;
+  padding-bottom: 80px;
+}
+
+.FAQContainer {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.FAQHeader {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.FAQHeader h1 {
+  font-size: 3rem;
+  color: var(--text-white);
+  margin-bottom: 15px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.FAQHeader p {
+  color: var(--text-gray);
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.FAQAccordion {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.FAQItem {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.FAQItem:hover {
+  border-color: var(--primary);
+}
+
+.FAQItem.open {
+  border-color: var(--primary);
+}
+
+.FAQQuestion {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 25px;
+  background-color: transparent;
+}
+
+.FAQQuestion h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--text-white);
+  font-weight: 600;
+  padding-right: 20px;
+}
+
+.FAQIcon {
+  font-size: 1.5rem;
+  color: var(--primary);
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+
+.FAQAnswer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-in-out;
+  background-color: var(--bg-dark);
+}
+
+.FAQAnswer p {
+  margin: 0;
+  padding: 0 25px 25px;
+  color: var(--text-gray);
+  line-height: 1.6;
+}
+
+.FAQLoading, .FAQEmpty {
+  text-align: center;
+  padding: 40px;
+  color: var(--text-gray);
+  font-size: 1.2rem;
+}

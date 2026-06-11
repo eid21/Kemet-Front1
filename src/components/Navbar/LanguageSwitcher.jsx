@@ -4,7 +4,7 @@ import './LanguageSwitcher.css';
 
 const LANGUAGES = [
   { code: 'en', label: 'EN', name: 'English' },
-  { code: 'ar', label: 'AR', name: 'العربية' },
+  { code: 'ar', label: 'AR', name: 'Arabic' },
   { code: 'fr', label: 'FR', name: 'Français' },
   { code: 'es', label: 'ES', name: 'Español' },
   { code: 'ru', label: 'RU', name: 'Русский' }
@@ -53,7 +53,7 @@ export const LanguageSwitcher = () => {
   return (
     <div className="LanguageSwitcher" ref={dropdownRef}>
       <button className="LangToggleButton" onClick={() => setIsOpen(!isOpen)}>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
         <span>{currentLang.label}</span>
       </button>
 
