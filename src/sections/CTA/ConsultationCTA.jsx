@@ -26,7 +26,7 @@ export const ConsultationCTA = ({
       <div className="ConsultationCTAOverlay"></div>
       <div className="ConsultationLayoutContainer">
         <div className="ConsultationMainPanel">
-          <span className="ConsultationSegmentBadge">{t('cta.badge')}</span>
+
           <h2 className="ConsultationCoreHeading">{t('cta.heading')}</h2>
           <p className="ConsultationCoreSummary">
             {t('cta.summary')}

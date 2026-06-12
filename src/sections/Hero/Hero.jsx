@@ -24,17 +24,51 @@ export const Hero = ({ setActiveTab, setCategoryFilter }) => {
     : defaultAssets;
 
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
 
-  useEffect(() => {
-    const slideshowTimer = setInterval(() => {
-      setActiveSlideIndex((prevIndex) => (prevIndex + 1) % slideshowAssets.length);
-    }, 2000);
-    return () => clearInterval(slideshowTimer);
-  }, [slideshowAssets.length]);
+  const nextSlide = () => {
+    setActiveSlideIndex((prev) => (prev + 1) % slideshowAssets.length);
+  };
+
+  const prevSlide = () => {
+    setActiveSlideIndex((prev) => (prev - 1 + slideshowAssets.length) % slideshowAssets.length);
+  };
+
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) {
+      if (i18n.dir() === 'rtl') prevSlide();
+      else nextSlide();
+    } else if (isRightSwipe) {
+      if (i18n.dir() === 'rtl') nextSlide();
+      else prevSlide();
+    }
+  };
 
   return (
     <section className="HeroBlock" id="home">
-      <div className="HeroSlideshowGrid">
+      <div 
+        className="HeroSlideshowGrid"
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+      >
         {slideshowAssets.map((bgAsset, idx) => (
           <div 
             key={idx}
@@ -42,16 +76,37 @@ export const Hero = ({ setActiveTab, setCategoryFilter }) => {
             style={{ backgroundImage: `url(${bgAsset})` }}
           />
         ))}
+        
+        {slideshowAssets.length > 1 && (
+          <>
+            <button className="HeroSliderArrow PrevArrow" onClick={prevSlide} aria-label="Previous slide">
+              &#10094;
+            </button>
+            <button className="HeroSliderArrow NextArrow" onClick={nextSlide} aria-label="Next slide">
+              &#10095;
+            </button>
+            <div className="HeroSliderPagination">
+              {slideshowAssets.map((_, idx) => (
+                <button 
+                  key={idx} 
+                  className={`HeroSliderDot ${activeSlideIndex === idx ? 'active' : ''}`}
+                  onClick={() => setActiveSlideIndex(idx)}
+                  aria-label={`Go to slide ${idx + 1}`}
+                />
+              ))}
+            </div>
+          </>
+        )}
       </div>
       <div className="HeroVignetteOverlay"></div>
 
       <div className="HeroDetailsPanel">
         <div className="HeroSectorBadges fade-up-reveal speed-1">
-          <span className="SectorBadge">Construction</span>
+          <span className="SectorBadge">{t('hero.sector_construction', 'Construction')}</span>
           <span className="SectorBadgeDot">•</span>
-          <span className="SectorBadge">Mining</span>
+          <span className="SectorBadge">{t('hero.sector_mining', 'Mining')}</span>
           <span className="SectorBadgeDot">•</span>
-          <span className="SectorBadge">Agriculture</span>
+          <span className="SectorBadge">{t('hero.sector_agriculture', 'Agriculture')}</span>
         </div>
         
         <h1 className="HeroCoreHeadline">

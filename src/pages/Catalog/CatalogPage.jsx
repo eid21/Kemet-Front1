@@ -74,6 +74,7 @@ export const CatalogPage = ({
         : [...prevFilters, category]
     );
     setCategoryFilter('ALL');
+    setDrawerOpen(false);
   };
 
   const resetFilters = () => {
@@ -286,23 +287,7 @@ export const CatalogPage = ({
               </div>
             </div>
 
-            <div className="csb-divider"></div>
 
-            <div className="csb-section">
-              <span className="csb-section-label">{t('catalog.availability')}</span>
-              <div className="csb-availability-list">
-                <div className="csb-avail-item">
-                  <span className="csb-avail-dot green"></span>
-                  <span className="csb-avail-label">{t('catalog.in_stock')}</span>
-                  <span className="csb-check-count">{equipmentList.filter(i => i.status === 'In Stock').length}</span>
-                </div>
-                <div className="csb-avail-item">
-                  <span className="csb-avail-dot orange"></span>
-                  <span className="csb-avail-label">{t('catalog.available')}</span>
-                  <span className="csb-check-count">{equipmentList.filter(i => i.status === 'Available').length}</span>
-                </div>
-              </div>
-            </div>
           </aside>
 
           <div className="CatalogFleetInventoryGrid">

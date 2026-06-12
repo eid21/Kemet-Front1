@@ -1,12 +1,14 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-export const CategoryShowcase = () => {
+export const CategoryShowcase = ({ setActiveTab, setCategoryFilter }) => {
   const { t } = useTranslation();
 
-  const handleScrollToContact = (e) => {
+  const handleViewCategory = (e, categoryName) => {
     e.preventDefault();
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+    if (setActiveTab) setActiveTab('CATALOG');
+    if (setCategoryFilter) setCategoryFilter(categoryName);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -26,7 +28,7 @@ export const CategoryShowcase = () => {
           <div className="HeaderGroupingRight">
             <button 
               className="ShowAllCategoriesButton" 
-              onClick={handleScrollToContact}
+              onClick={(e) => handleViewCategory(e, 'ALL')}
               id="btn-all-categories"
             >
               {t('showcase.all_btn')} <span>&rarr;</span>
@@ -46,7 +48,7 @@ export const CategoryShowcase = () => {
               </p>
               <button 
                 className="CardActionAnchor" 
-                onClick={handleScrollToContact}
+                onClick={(e) => handleViewCategory(e, 'EXCAVATORS')}
                 id="btn-view-excavators"
               >
                 {t('showcase.view_range')}
@@ -65,7 +67,7 @@ export const CategoryShowcase = () => {
               </p>
               <button 
                 className="CardActionAnchor" 
-                onClick={handleScrollToContact}
+                onClick={(e) => handleViewCategory(e, 'LOADERS')}
                 id="btn-view-loaders"
               >
                 {t('showcase.view_range')}
@@ -84,7 +86,7 @@ export const CategoryShowcase = () => {
               </p>
               <button 
                 className="CardActionAnchor" 
-                onClick={handleScrollToContact}
+                onClick={(e) => handleViewCategory(e, 'TRACTORS')}
                 id="btn-view-tractors"
               >
                 {t('showcase.view_range')}
@@ -103,7 +105,7 @@ export const CategoryShowcase = () => {
               </p>
               <button 
                 className="CardActionAnchor" 
-                onClick={handleScrollToContact}
+                onClick={(e) => handleViewCategory(e, 'TRUCKS')}
                 id="btn-view-trucks"
               >
                 {t('showcase.view_range')}

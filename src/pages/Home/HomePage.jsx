@@ -20,7 +20,10 @@ export const HomePage = ({
         setActiveTab={setActiveTab} 
         setCategoryFilter={setCategoryFilter} 
       />
-      <CategoryShowcase />
+      <CategoryShowcase 
+        setActiveTab={setActiveTab} 
+        setCategoryFilter={setCategoryFilter} 
+      />
       <BrandAdvantages />
       <ConsultationCTA 
         setShowConsultationModal={setShowConsultationModal}

@@ -3,10 +3,13 @@
     "badge": "Construction • Exploitation Minière • Industriel",
     "headline_1": "Alimenter",
     "headline_2": "Les Projets",
-    "headline_3": "Les Plus Durs",
-    "body": "La machinerie lourde KEMET est conçue pour les opérateurs qui refusent tout compromis — offrant une puissance brute, un contrôle de précision et une fiabilité inégalée dans tout le CCG et au-delà.",
-    "btn_browse": "Parcourir l'équipement",
+    "headline_3": "du Monde",
+    "body": "Votre partenaire de confiance pour concevoir l'avenir. KEMET offre une puissance, une précision et une fiabilité sans compromis pour les applications de machinerie lourde les plus exigeantes du monde entier.",
+    "btn_browse": "Explorer l'Équipement",
     "btn_catalog": "Voir le catalogue",
+    "sector_construction": "Construction",
+    "sector_mining": "Minier",
+    "sector_agriculture": "Agriculture",
     "kemet_watermark": "KEMET",
     "metrics": {
       "original": {
@@ -118,12 +121,12 @@
   "about": {
     "badge": "Notre Histoire",
     "heading": "À propos de Kemet & Alpha Sino",
-    "subheading": "Établir des partenariats industriels de confiance à travers le Moyen-Orient, l'Afrique et au-delà depuis 2003.",
+    "subheading": "Établir des partenariats industriels de confiance à travers le monde entier depuis 2003.",
     "history_badge": "Histoire de l'entreprise",
     "history_heading_1": "Un Héritage Bâti Sur",
     "history_heading_2": "La Confiance Industrielle",
     "history_p1": "Fondée dans le quartier de Port Said à Dubaï, Alpha Sino General Trading Co. LLC a commencé comme importateur spécialisé d'équipements de construction et d'exploitation minière pour le marché des EAU en développement rapide.",
-    "history_p2": "La marque KEMET est née d'une conviction simple : les secteurs de la construction et de l'exploitation minière du CCG méritaient des machines spécialement conçues pour résister à des chaleurs extrêmes...",
+    "history_p2": "La marque KEMET est née d'une conviction simple : les secteurs de la construction et de l'exploitation minière du monde entier méritaient des machines spécialement conçues pour résister à des chaleurs extrêmes...",
     "history_p3": "Aujourd'hui, les machines KEMET sont déployées à travers des mégaprojets de construction, des opérations minières à ciel ouvert et des développements d'infrastructures industrielles.",
     "strengths_title": "Nos Forces Opérationnelles",
     "strength_1_title": "Années d'Excellence",
@@ -131,7 +134,7 @@
     "strength_2_title": "Disponibilité des Pièces",
     "strength_2_desc": "Composants d'origine garantis pour un temps de fonctionnement maximal.",
     "strength_3_title": "Envoi d'Ingénieurs",
-    "strength_3_desc": "Équipe de support technique dédiée active dans tout le CCG."
+    "strength_3_desc": "Équipe de support technique dédiée active dans le monde entier."
   },
   "details": {
     "back_to_catalog": "Retour au Catalogue",

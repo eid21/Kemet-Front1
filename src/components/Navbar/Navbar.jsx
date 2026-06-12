@@ -22,6 +22,7 @@ export const Navbar = ({
         onClick={() => { 
           setSelectedProduct(null); 
           setActiveTab('HOME'); 
+          setIsMobileMenuOpen(false);
           window.scrollTo({ top: 0, behavior: 'smooth' }); 
         }}
       >
@@ -39,7 +40,10 @@ export const Navbar = ({
       </div>
       
       <nav>
-        <ul className={`NavigationList ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
+        <ul 
+          className={`NavigationList ${isMobileMenuOpen ? 'mobile-open' : ''}`}
+          onClick={() => setIsMobileMenuOpen(false)}
+        >
           {navigationItems.map((item) => {
             const key = item.label === 'About Us' ? 'about' : item.label.toLowerCase();
             return (
@@ -112,6 +116,7 @@ export const Navbar = ({
           onClick={() => {
             setSelectedProduct(null);
             setActiveTab('HOME');
+            setIsMobileMenuOpen(false);
             setTimeout(() => {
               document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
             }, 100);

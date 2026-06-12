@@ -8,6 +8,9 @@
     "btn_browse": "Browse Equipment",
     "btn_catalog": "View Catalog",
     "kemet_watermark": "KEMET",
+    "sector_construction": "Construction",
+    "sector_mining": "Mining",
+    "sector_agriculture": "Agriculture",
     "metrics": {
       "original": {
         "title": "Original Equipment",
@@ -45,7 +48,7 @@
     "contact_title": "Contact Us",
     "status_title": "Operational Status",
     "copyright": "Copyright © {{year}} KEMET Heavy Machinery.",
-    "slogan": "Built Without Compromise.",
+    "slogan": "Power Without Compromise.",
     "top_banner": "TRUSTED PARTNER FOR HEAVY MACHINERY SOLUTIONS WORLDWIDE",
     "feature_1": "Global Shipping",
     "feature_2": "Genuine Spare Parts",
@@ -55,23 +58,23 @@
     "hq_title": "Dubai HQ Dispatch",
     "hq_time": "Mon - Sat: 9:00 AM - 6:00 PM",
     "sunday_closed": "Sunday Closed",
-    "gcc_fleet": "GCC Service Fleet",
+    "gcc_fleet": "Worldwide Service Fleet",
     "dispatch_active": "24/7 Emergency Dispatch Active"
   },
   "advantages": {
     "badge": "Why Kemet",
-    "heading": "Built Without Compromise",
+    "heading": "Power Without Compromise",
     "power_title": "Industrial Power",
     "power_desc": "Every KEMET machine is engineered with high-torque powertrains and heavy-duty cooling packages designed to deliver sustained peak horsepower under continuous maximum load, ensuring zero power throttling in extreme desert and quarry environments.",
     "precision_title": "Absolute Precision",
     "precision_desc": "Equipped with state-of-the-art load-sensing hydraulic systems and intelligent electronic flow-matching control to deliver sub-millimeter operational accuracy, critical for high-stakes infrastructure and complex mining grading.",
     "reliability_title": "Uncompromising Reliability",
-    "reliability_desc": "Built on rugged, high-tensile steel frames and backed by an ISO-certified manufacturing process and a comprehensive GCC support network, ensuring maximum mechanical availability and minimized Total Cost of Ownership (TCO)."
+    "reliability_desc": "Built on rugged, high-tensile steel frames and backed by an ISO-certified manufacturing process and a comprehensive worldwide support network, ensuring maximum mechanical availability and minimized Total Cost of Ownership (TCO)."
   },
   "cta": {
     "badge": "Get In Touch",
     "heading": "Ready To Power Your Next Project?",
-    "summary": "Our heavy machinery specialists are standing by in Dubai to help you configure the perfect fleet for your operational requirements. Let's build without compromise.",
+    "summary": "Our heavy machinery specialists are standing by worldwide to help you configure the perfect fleet for your operational requirements. Power without compromise.",
     "button": "Request A Consultation"
   },
   "showcase": {
@@ -94,7 +97,7 @@
     "badge": "Kemet Lineup",
     "headline_1": "Full Equipment",
     "headline_2": "Catalog 2026",
-    "summary": "Every machine in the KEMET lineup is engineered for uncompromising performance, structural durability, and maximum mechanical uptime in extreme GCC climates.",
+    "summary": "Every machine in the KEMET lineup is engineered for uncompromising performance, structural durability, and maximum mechanical uptime in extreme climates worldwide.",
     "download_pdf": "Download PDF Catalog",
     "request_quote": "Request A Quote",
     "total_models": "Total Models",
@@ -129,20 +132,20 @@
   "about": {
     "badge": "Our Story",
     "heading": "About Kemet & Alpha Sino",
-    "subheading": "Building trusted industrial partnerships across the Middle East, Africa, and beyond since 2003.",
+    "subheading": "Building trusted industrial partnerships worldwide since 2003.",
     "history_badge": "Company History",
     "history_heading_1": "A Legacy Built On",
     "history_heading_2": "Industrial Trust",
-    "history_p1": "Founded in Dubai's Port Said district, Alpha Sino General Trading Co. LLC began as a specialized importer of construction and mining equipment for the rapidly developing UAE market. Two decades of relationship-driven commerce transformed us into one of the region's most recognized heavy machinery distributors.",
-    "history_p2": "The KEMET brand was born from a simple conviction: the GCC construction and mining sectors deserved purpose-engineered machinery that could withstand extreme heat, continuous heavy-cycle operations, and the logistical demands of remote project sites — without compromising operator productivity or machine reliability.",
-    "history_p3": "Today, KEMET machines are deployed across construction megaprojects, open-pit mining operations, and industrial infrastructure developments spanning the UAE, Saudi Arabia, Egypt, and sub-Saharan Africa.",
+    "history_p1": "Founded in Dubai's Port Said district, Alpha Sino General Trading Co. LLC began as a specialized importer of construction and mining equipment for the rapidly developing UAE market. Two decades of relationship-driven commerce transformed us into one of the world's most recognized heavy machinery distributors.",
+    "history_p2": "The KEMET brand was born from a simple conviction: the global construction and mining sectors deserved purpose-engineered machinery that could withstand extreme heat, continuous heavy-cycle operations, and the logistical demands of remote project sites — without compromising operator productivity or machine reliability.",
+    "history_p3": "Today, KEMET machines are deployed across construction megaprojects, open-pit mining operations, and industrial infrastructure developments worldwide.",
     "strengths_title": "Our Operational Strengths",
     "strength_1_title": "Years of Excellence",
     "strength_1_desc": "Relationship-driven heavy machinery distribution since 2003.",
     "strength_2_title": "OEM Parts Availability",
     "strength_2_desc": "Guaranteed genuine components for maximized machine uptime.",
     "strength_3_title": "Engineering Dispatch",
-    "strength_3_desc": "Dedicated technical support team active across the entire GCC."
+    "strength_3_desc": "Dedicated technical support team active worldwide."
   },
   "details": {
     "back_to_catalog": "Back to Catalog",
