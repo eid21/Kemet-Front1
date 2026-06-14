@@ -39,7 +39,7 @@ export const generateSpecSheetPDF = (item) => {
             font-weight: 900;
             letter-spacing: 2px;
             text-transform: uppercase;
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Roboto Slab', serif;
           }
           .logo span {
             color: #ff5e00;
@@ -55,7 +55,7 @@ export const generateSpecSheetPDF = (item) => {
             margin: 0 0 10px 0;
             font-weight: 800;
             color: #111;
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Roboto Slab', serif;
           }
           .desc {
             font-size: 16px;
@@ -74,7 +74,7 @@ export const generateSpecSheetPDF = (item) => {
             padding-bottom: 8px;
             margin-bottom: 20px;
             color: #ff5e00;
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Roboto Slab', serif;
           }
           .spec-row {
             display: flex;
@@ -103,7 +103,21 @@ export const generateSpecSheetPDF = (item) => {
       <body>
         <div class="header">
           <div>
-            <div class="logo">KE<span>MET</span></div>
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 5px;">
+                <svg viewBox="150 50 600 600" style="height: 48px; width: auto; flex-shrink: 0;" xmlns="http://www.w3.org/2000/svg">
+                  <path fill="#0f172a" d="M358.41,53.84h-124.43c-43.39,0-78.57,35.18-78.57,78.57v185.46L358.41,53.84Z"/>
+                  <path fill="#41d800" d="M328.78,326.67l104.21,61c22.07,12.92,50.3,7.37,65.84-12.94L744.33,53.84h-240.78c-24.47,0-47.53,11.4-62.4,30.83L184.09,420.66c-69.53,90.89-4.73,222.06,109.7,222.06h446.92l-.05-.04-411.87-316.01ZM458.14,311.14c14,0,25.35,11.35,25.35,25.35s-11.35,25.35-25.35,25.35-25.35-11.35-25.35-25.35,11.35-25.35,25.35-25.35ZM290.09,560.39c-31.91,0-57.78-25.87-57.78-57.78s25.87-57.78,57.78-57.78,57.78,25.87,57.78,57.78-25.87,57.78-57.78,57.78Z"/>
+                  <path fill="#41d800" d="M474,427 l80,-25 l-30,70 Z M554,488 l80,-25 l-30,70 Z M634,550 l80,-25 l-30,70 Z" />
+                  <circle fill="#41d800" cx="290.09" cy="502.61" r="25.35"/>
+                </svg>
+                <div style="display: flex; flex-direction: column; position: relative; margin-top: 2px;">
+                  <div style="display: flex; align-items: flex-start; position: relative;">
+                    <span style="position: absolute; top: -14px; left: 0px; font-size: 16px; font-weight: bold; color: #0f172a;">&reg;</span>
+                    <span style="font-family: 'Roboto Slab', serif; font-weight: 900; font-size: 36px; letter-spacing: -0.02em; color: #0f172a; line-height: 1;">KEMET</span>
+                  </div>
+                  <span style="font-family: 'Inter', sans-serif; font-weight: 800; font-size: 9px; letter-spacing: 0.05em; color: #0f172a; line-height: 1; margin-top: 4px;">THE POWER TO BUILD NATIONS</span>
+                </div>
+              </div>
             <div style="font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 1px;">By Alfa Sino</div>
           </div>
           <div class="model-code">${item.modelCode}</div>
@@ -142,8 +156,22 @@ export const generateCatalogPDF = (selectedItems, userInfo) => {
     <div class="cover-page">
       <div class="cover-glow"></div>
       <div class="cover-header">
-        <div class="logo">KE<span>MET</span></div>
-        <div style="font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 1.5px;">Heavy Machinery Division</div>
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+            <svg viewBox="150 50 600 600" style="height: 60px; width: auto; flex-shrink: 0;" xmlns="http://www.w3.org/2000/svg">
+              <path fill="#ffffff" d="M358.41,53.84h-124.43c-43.39,0-78.57,35.18-78.57,78.57v185.46L358.41,53.84Z"/>
+              <path fill="#41d800" d="M328.78,326.67l104.21,61c22.07,12.92,50.3,7.37,65.84-12.94L744.33,53.84h-240.78c-24.47,0-47.53,11.4-62.4,30.83L184.09,420.66c-69.53,90.89-4.73,222.06,109.7,222.06h446.92l-.05-.04-411.87-316.01ZM458.14,311.14c14,0,25.35,11.35,25.35,25.35s-11.35,25.35-25.35,25.35-25.35-11.35-25.35-25.35,11.35-25.35,25.35-25.35ZM290.09,560.39c-31.91,0-57.78-25.87-57.78-57.78s25.87-57.78,57.78-57.78,57.78,25.87,57.78,57.78-25.87,57.78-57.78,57.78Z"/>
+              <path fill="#41d800" d="M474,427 l80,-25 l-30,70 Z M554,488 l80,-25 l-30,70 Z M634,550 l80,-25 l-30,70 Z" />
+              <circle fill="#41d800" cx="290.09" cy="502.61" r="25.35"/>
+            </svg>
+            <div style="display: flex; flex-direction: column; position: relative; margin-top: 3px;">
+              <div style="display: flex; align-items: flex-start; position: relative;">
+                <span style="position: absolute; top: -16px; left: 2px; font-size: 18px; font-weight: bold; color: #ffffff;">&reg;</span>
+                <span style="font-family: 'Roboto Slab', serif; font-weight: 900; font-size: 46px; letter-spacing: -0.02em; color: #ffffff; line-height: 1;">KEMET</span>
+              </div>
+              <span style="font-family: 'Inter', sans-serif; font-weight: 800; font-size: 11px; letter-spacing: 0.05em; color: #ffffff; line-height: 1; margin-top: 4px;">THE POWER TO BUILD NATIONS</span>
+            </div>
+          </div>
+        <div style="font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 1.5px;">By Alfa Sino | Heavy Machinery</div>
       </div>
       <div class="cover-body">
         <div class="cover-title-pill">${i18n.t('catalog.promo_badge', 'Customized Equipment Catalog')}</div>
@@ -210,8 +238,22 @@ export const generateCatalogPDF = (selectedItems, userInfo) => {
         <div class="product-page">
           <div class="header">
             <div>
-              <div class="logo">KE<span>MET</span></div>
-              <div style="font-size: 9px; color: #888; text-transform: uppercase;">Heavy Machinery</div>
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 5px;">
+                  <svg viewBox="150 50 600 600" style="height: 38px; width: auto; flex-shrink: 0;" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#0f172a" d="M358.41,53.84h-124.43c-43.39,0-78.57,35.18-78.57,78.57v185.46L358.41,53.84Z"/>
+                    <path fill="#41d800" d="M328.78,326.67l104.21,61c22.07,12.92,50.3,7.37,65.84-12.94L744.33,53.84h-240.78c-24.47,0-47.53,11.4-62.4,30.83L184.09,420.66c-69.53,90.89-4.73,222.06,109.7,222.06h446.92l-.05-.04-411.87-316.01ZM458.14,311.14c14,0,25.35,11.35,25.35,25.35s-11.35,25.35-25.35,25.35-25.35-11.35-25.35-25.35,11.35-25.35,25.35-25.35ZM290.09,560.39c-31.91,0-57.78-25.87-57.78-57.78s25.87-57.78,57.78-57.78,57.78,25.87,57.78,57.78-25.87,57.78-57.78,57.78Z"/>
+                    <path fill="#41d800" d="M474,427 l80,-25 l-30,70 Z M554,488 l80,-25 l-30,70 Z M634,550 l80,-25 l-30,70 Z" />
+                    <circle fill="#41d800" cx="290.09" cy="502.61" r="25.35"/>
+                  </svg>
+                  <div style="display: flex; flex-direction: column; position: relative; margin-top: 1px;">
+                    <div style="display: flex; align-items: flex-start; position: relative;">
+                      <span style="position: absolute; top: -10px; left: 0px; font-size: 12px; font-weight: bold; color: #0f172a;">&reg;</span>
+                      <span style="font-family: 'Roboto Slab', serif; font-weight: 900; font-size: 28px; letter-spacing: -0.02em; color: #0f172a; line-height: 1;">KEMET</span>
+                    </div>
+                    <span style="font-family: 'Inter', sans-serif; font-weight: 800; font-size: 7px; letter-spacing: 0.05em; color: #0f172a; line-height: 1; margin-top: 2px;">THE POWER TO BUILD NATIONS</span>
+                  </div>
+                </div>
+              <div style="font-size: 9px; color: #888; text-transform: uppercase;">By Alfa Sino</div>
             </div>
             <div class="model-code">${item.modelCode} / Year ${item.year}</div>
           </div>
@@ -288,7 +330,7 @@ export const generateCatalogPDF = (selectedItems, userInfo) => {
             padding-bottom: 20px;
           }
           .logo {
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Roboto Slab', serif;
             font-size: 26px;
             font-weight: 900;
             letter-spacing: 2px;
@@ -300,7 +342,7 @@ export const generateCatalogPDF = (selectedItems, userInfo) => {
           }
           .cover-title-pill {
             display: inline-block;
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Roboto Slab', serif;
             font-size: 11px;
             font-weight: 800;
             letter-spacing: 1.5px;
@@ -313,7 +355,7 @@ export const generateCatalogPDF = (selectedItems, userInfo) => {
             margin-bottom: 24px;
           }
           .cover-title {
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Roboto Slab', serif;
             font-size: 48px;
             font-weight: 900;
             line-height: 1.1;
@@ -342,7 +384,7 @@ export const generateCatalogPDF = (selectedItems, userInfo) => {
             gap: 4px;
           }
           .meta-label {
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Roboto Slab', serif;
             font-size: 10px;
             font-weight: 800;
             color: #ff5e00;
@@ -374,7 +416,7 @@ export const generateCatalogPDF = (selectedItems, userInfo) => {
             max-width: 600px;
           }
           .trans-pill {
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Roboto Slab', serif;
             font-size: 11px;
             font-weight: 800;
             text-transform: uppercase;
@@ -384,7 +426,7 @@ export const generateCatalogPDF = (selectedItems, userInfo) => {
             border-radius: 20px;
           }
           .trans-title {
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Roboto Slab', serif;
             font-size: 56px;
             font-weight: 900;
             text-transform: uppercase;
@@ -435,14 +477,14 @@ export const generateCatalogPDF = (selectedItems, userInfo) => {
             color: #111;
           }
           .model-code {
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Roboto Slab', serif;
             font-size: 13px;
             font-weight: 700;
             color: #666;
             letter-spacing: 1px;
           }
           .product-title {
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Roboto Slab', serif;
             font-size: 32px;
             font-weight: 800;
             margin: 30px 0 10px 0;
@@ -469,7 +511,7 @@ export const generateCatalogPDF = (selectedItems, userInfo) => {
             border: 1px solid #eef0f3;
           }
           .specs-box-title {
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Roboto Slab', serif;
             font-size: 14px;
             font-weight: 800;
             color: #ff5e00;

@@ -209,92 +209,12 @@ export const CatalogPage = ({
                 </button>
               )}
             </div>
-            <div className="SearchFilteringMetadata">
-              <span className="SearchResultsCounter">
-                <strong>{filteredFleet.length}</strong> {filteredFleet.length === 1 ? t('catalog.model_found') : t('catalog.models_found')}
-              </span>
-              {isFilterActive && (
-                <button className="SearchResetAllFiltersButton" onClick={resetFilters}>
-                  {t('catalog.clear_all')}
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ width: '13px', height: '13px' }}>
-                    <line x1="18" y1="6" x2="6" y2="18"/>
-                    <line x1="6" y1="6" x2="18" y2="18"/>
-                  </svg>
-                </button>
-              )}
-              <button className="CatalogMobileDrawerTrigger" onClick={() => setDrawerOpen(prev => !prev)} id="btn-mobile-filters">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ width: '16px', height: '16px' }}>
-                  <line x1="4" y1="6" x2="20" y2="6"/>
-                  <line x1="8" y1="12" x2="16" y2="12"/>
-                  <line x1="11" y1="18" x2="13" y2="18"/>
-                </svg>
-                {t('catalog.filters')} {isFilterActive && <span className="filter-active-dot"></span>}
-              </button>
-            </div>
+
           </div>
         </div>
 
         <div className="CatalogGridLayout">
-          <aside className={`CatalogSidebarFilters ${drawerOpen ? 'open' : ''}`}>
-            <div className="csb-header">
-              <span className="csb-title">{t('catalog.filters')}</span>
-              {isFilterActive && (
-                <button className="csb-clear-btn" onClick={resetFilters}>{t('catalog.clear_all')}</button>
-              )}
-            </div>
 
-            <div className="csb-section">
-              <span className="csb-section-label">{t('catalog.category')}</span>
-              <div className="csb-check-list">
-                {categoryOptions.map(cat => {
-                  const count = equipmentList.filter(i => i.category === cat).length;
-                  const checked = selectedCategoryFilters.includes(cat);
-                  return (
-                    <label key={cat} className={`csb-check-item ${checked ? 'checked' : ''}`}>
-                      <span className={`csb-checkbox ${checked ? 'checked' : ''}`}>
-                        {checked && (
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" style={{ width: '11px', height: '11px' }}>
-                            <polyline points="20 6 9 17 4 12"/>
-                          </svg>
-                        )}
-                      </span>
-                      <input
-                        type="checkbox"
-                        checked={checked}
-                        onChange={() => toggleCategorySelection(cat)}
-                        style={{ display: 'none' }}
-                      />
-                      <span className="csb-check-label">{cat.charAt(0) + cat.slice(1).toLowerCase()}</span>
-                      <span className="csb-check-count">{count}</span>
-                    </label>
-                  );
-                })}
-              </div>
-            </div>
-
-            <div className="csb-divider"></div>
-
-            <div className="csb-section">
-              <span className="csb-section-label">{t('catalog.manufacturing_year')}</span>
-              <div className="csb-select-wrapper">
-                <select
-                  id="catalog-year-select"
-                  className="csb-select"
-                  value={selectedYearFilter}
-                  onChange={e => setSelectedYearFilter(e.target.value)}
-                >
-                  {manufacturingYears.map(y => (
-                    <option key={y} value={y}>{y === 'ALL' ? t('catalog.all_years') : y}</option>
-                  ))}
-                </select>
-                <svg className="csb-select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="6 9 12 15 18 9"/>
-                </svg>
-              </div>
-            </div>
-
-
-          </aside>
 
           <div className="CatalogFleetInventoryGrid">
             <div className="PremiumBanner" style={{ textAlign: 'center', margin: '0 0 30px 0', padding: '20px', backgroundColor: 'rgba(255, 153, 0, 0.05)', border: '1px solid rgba(255, 153, 0, 0.2)', borderRadius: '8px', color: 'var(--text-white)' }}>
@@ -352,11 +272,7 @@ export const CatalogPage = ({
                           return (
                             <div key={index} className="InventoryCardQuickSpecItem">
                               <span className="spec-label">
-                                {spec.label.toLowerCase().includes('payload') || spec.label.toLowerCase().includes('operating weight') 
-                                  ? '⚖ Payload' 
-                                  : spec.label.toLowerCase().includes('engine') 
-                                    ? '⚙ Engine' 
-                                    : t(`specs.labels.${specLabelKey}`, { defaultValue: spec.label })}
+                                {t(`specs.labels.${specLabelKey}`, { defaultValue: spec.label })}
                               </span>
                               <span className="spec-value">{t(`specs.values.${specValueKey}`, { defaultValue: spec.value })}</span>
                             </div>

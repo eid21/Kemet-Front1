@@ -7,15 +7,15 @@ export const CategoryShowcase = ({ setActiveTab, setCategoryFilter }) => {
   const mainSections = [
     {
       id: 'kemet-wheel-loaders',
-      name: 'KEMET Wheel Loaders',
-      description: 'Explore our premium range of KEMET wheel loaders, engineered for maximum power and endurance in tough environments.',
-      image: '/catalog-new.jpg' // Using a generic banner image since specific ones aren't provided yet
+      name: 'KEMET Heavy Machinery',
+      description: 'Explore our premium range of KEMET heavy machinery, engineered for maximum power and endurance in tough environments.',
+      image: '/heavy-machinery.jpg'
     },
     {
       id: 'agricm-product-catalog',
-      name: 'AGRICM Product Catalog',
-      description: 'Discover the full AGRICM product catalog, featuring specialized machinery and equipment.',
-      image: '/catalog-new.jpg' // Using a generic banner image
+      name: 'AGRICM Agricultural Machinery',
+      description: 'Discover the full AGRICM agricultural catalog, featuring specialized machinery and equipment for stronger harvests.',
+      image: '/agricm-machinery.jpg'
     }
   ];
 
@@ -54,8 +54,8 @@ export const CategoryShowcase = ({ setActiveTab, setCategoryFilter }) => {
         <div className="ShowcaseGridLayout" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '30px' }}>
           {mainSections.map(section => (
             <div className="FleetCategoryCard" id={`card-${section.id}`} key={section.id}>
-              <div className="CardMediaViewport" style={{ height: '250px', backgroundColor: '#eaeaea' }}>
-                <img src={section.image} alt={section.name} className="CardVehicleAsset" style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
+              <div className="CardMediaViewport" style={{ aspectRatio: 'auto', height: 'auto', backgroundColor: '#eaeaea', overflow: 'hidden' }}>
+                <img src={section.image} alt={section.name} className="CardVehicleAsset" style={{ display: 'block', width: '100%', height: 'auto', objectFit: 'contain' }} />
               </div>
               <div className="CardSpecificationContent">
                 <h3 className="CardVehicleHeading">{section.name}</h3>

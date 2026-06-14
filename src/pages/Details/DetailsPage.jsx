@@ -54,8 +54,8 @@ export const DetailsPage = ({ item, setSelectedProduct, downloadSpecPDF }) => {
     if (navigator.share) {
       try {
         await navigator.share({
-          title: `KEMET - ${t(`fleet.${item.id}.name`)}`,
-          text: `Check out the ${t(`fleet.${item.id}.name`)} (${item.modelCode}) on KEMET Heavy Machinery.`,
+          title: `KEMET - ${t(`fleet.${item.id}.name`, { defaultValue: item.name })}`,
+          text: `Check out the ${t(`fleet.${item.id}.name`, { defaultValue: item.name })} (${item.modelCode}) on KEMET Heavy Machinery.`,
           url: shareUrl,
         });
       } catch (err) {
@@ -94,7 +94,7 @@ export const DetailsPage = ({ item, setSelectedProduct, downloadSpecPDF }) => {
             <span className="ProductSpecsCategoryBadge">{item.category}</span>
             <span className="ProductSpecsStockBadge">{item.status === 'In Stock' ? t('catalog.in_stock') : t('catalog.available')}</span>
           </div>
-          <h1 className="ProductSpecsBannerHeadline">{t(`fleet.${item.id}.name`)}</h1>
+          <h1 className="ProductSpecsBannerHeadline">{t(`fleet.${item.id}.name`, { defaultValue: item.name })}</h1>
           <p className="ProductSpecsBannerVehicleModel">{item.modelCode} — 2026 {t('details.series')}</p>
           <div className="ProductSpecsBannerChipsPanel">
             {keyEngineeringChips.map((chip, idx) => (
@@ -111,7 +111,7 @@ export const DetailsPage = ({ item, setSelectedProduct, downloadSpecPDF }) => {
         <div className="ProductSpecsShowcaseSplit">
           <div className="ProductSpecsMediaGallery">
             <div className="ProductSpecsGalleryFrame">
-              <img src={selectedDetailImage} alt={t(`fleet.${item.id}.name`)} className="ProductSpecsGalleryAsset" />
+              <img src={selectedDetailImage} alt={t(`fleet.${item.id}.name`, { defaultValue: item.name })} className="ProductSpecsGalleryAsset" />
               <div className="ProductSpecsGalleryShimmerOverlay" />
             </div>
             <div className="ProductSpecsThumbnailsStrip">
@@ -129,7 +129,7 @@ export const DetailsPage = ({ item, setSelectedProduct, downloadSpecPDF }) => {
           </div>
 
           <div className="ProductSpecsQuickSummaryPanel">
-            <p className="ProductSpecsLongDescription">{t(`fleet.${item.id}.description`)}</p>
+            <p className="ProductSpecsLongDescription">{t(`fleet.${item.id}.description`, { defaultValue: item.longDescription || item.description })}</p>
 
             <div className="ProductSpecsPrimaryMetricsGrid">
               {item.specs.map((spec, idx) => {
@@ -224,7 +224,7 @@ export const DetailsPage = ({ item, setSelectedProduct, downloadSpecPDF }) => {
                     </svg>
                   </div>
                   <h3>{t('details.inquiry_sent')}</h3>
-                  <p>{t('details.inquiry_sent_desc_1')} <strong>{t(`fleet.${item.id}.name`)}</strong> ({item.modelCode}) {t('details.inquiry_sent_desc_2')}</p>
+                  <p>{t('details.inquiry_sent_desc_1')} <strong>{t(`fleet.${item.id}.name`, { defaultValue: item.name })}</strong> ({item.modelCode}) {t('details.inquiry_sent_desc_2')}</p>
                   <button className="ProductSpecsActionSecondaryButton" style={{ marginTop: '15px' }} onClick={() => setClientInquirySent(false)}>{t('details.send_another')} &rarr;</button>
                 </div>
               ) : (

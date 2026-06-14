@@ -5,7 +5,7 @@ import HomePage from './pages/Home/HomePage.jsx';
 import CatalogPage from './pages/Catalog/CatalogPage.jsx';
 import DetailsPage from './pages/Details/DetailsPage.jsx';
 import AboutPage from './pages/About/AboutPage.jsx';
-import ContactPage from './pages/Contact/ContactPage.jsx';
+
 import FAQPage from './pages/FAQ/FAQPage.jsx';
 import PrivacyPage from './pages/Privacy/PrivacyPage.jsx';
 import TermsPage from './pages/Terms/TermsPage.jsx';
@@ -128,8 +128,6 @@ export const App = () => {
         />
       ) : activeTab === 'ABOUT' ? (
         <AboutPage />
-      ) : activeTab === 'CONTACT' ? (
-        <ContactPage />
       ) : activeTab === 'FAQ' ? (
         <FAQPage />
       ) : activeTab === 'PRIVACY' ? (

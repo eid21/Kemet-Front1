@@ -1,397 +1,1376 @@
 {
-  "info": {
-    "_postman_id": "bd3f5fb7-5d6a-45dd-9960-15e7f3555648",
-    "name": "Kemet Public API",
-    "description": "Professional Postman collection for the **Kemet** heavy machinery public REST API (Laravel 12).\n\n## Base URL\n`{{base_url}}` — default: `http://127.0.0.1:8000/api`\n\n## Authentication\nNo authentication required. All endpoints are public.\n\n## Localization\nSupported locales: `en`, `ar`, `fr`, `es`, `ru`\n\nSet locale via:\n- Header: `X-Locale: en`\n- Query param: `?lang=en`\n\n## Response Envelope\nAll responses follow this structure:\n```json\n{\n  \"code\": 200,\n  \"message\": \"Human-readable status message\",\n  \"data\": {},\n  \"pagination\": {}\n}\n```\n\n`pagination` is only included on paginated endpoints (FAQ).\n\n## Error Codes\n| Code | Description |\n|------|-------------|\n| 200 | Success |\n| 201 | Created (contact, consultation) |\n| 404 | Resource not found |\n| 422 | Validation error — `data` contains field errors |\n| 500 | Server error |\n\n## Setup\n1. Import `Kemet-API.postman_collection.json`\n2. Import `Kemet-Local.postman_environment.json`\n3. Run `php artisan serve` and ensure DB is seeded: `php artisan migrate --seed`\n4. Select the **Kemet — Local** environment\n\nGenerated: 2026-06-11 12:09:19 UTC",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "_exporter_id": "43687726"
-  },
-  "item": [
-    {
-      "name": "Settings & Content",
-      "item": [
+    "info": {
+        "_postman_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+        "name": "Kemet Public API",
+        "description": "Professional Postman collection for the **Kemet** heavy machinery public REST API (Laravel 12).\n\n## Base URL\n`{{base_url}}` — default: `http://127.0.0.1:8000/api`\n\n## Authentication\nNo authentication required. All endpoints are public.\n\n## Localization\nSupported locales: `en`, `ar`, `fr`, `es`, `ru`\n\nSet locale via:\n- Header: `X-Locale: en`\n- Query param: `?lang=en`\n\n## Response Envelope\nAll responses follow this structure:\n```json\n{\n  \"code\": 200,\n  \"message\": \"Human-readable status message\",\n  \"data\": {},\n  \"pagination\": {}\n}\n```\n\n`pagination` is only included on paginated endpoints (FAQ).\n\n## Error Codes\n| Code | Description |\n|------|-------------|\n| 200 | Success |\n| 201 | Created (contact, consultation) |\n| 404 | Resource not found |\n| 422 | Validation error — `data` contains field errors |\n| 500 | Server error |\n\n## Setup\n1. Import `Kemet-API.postman_collection.json`\n2. Import `Kemet-Local.postman_environment.json`\n3. Run `php artisan serve` and ensure DB is seeded: `php artisan migrate --seed`\n4. Select the **Kemet — Local** environment\n\nGenerated: 2026-06-14 02:11:21 UTC",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "variable": [
         {
-          "name": "Get Settings",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              },
-              {
-                "key": "X-Locale",
-                "value": "{{locale}}"
-              }
-            ],
-            "url": {
-              "raw": "{{base_url}}/settings",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "settings"
-              ]
-            },
-            "description": "Returns global site settings: branding, contact info, social links, SEO meta, logo, and favicon."
-          }
+            "key": "base_url",
+            "value": "http://127.0.0.1:8000/api"
         },
         {
-          "name": "Get About Us",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              },
-              {
-                "key": "X-Locale",
-                "value": "{{locale}}"
-              }
-            ],
-            "url": {
-              "raw": "{{base_url}}/about-us",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "about-us"
-              ]
-            },
-            "description": "Returns the About page content (HTML description, banner, image, last updated date)."
-          }
+            "key": "locale",
+            "value": "en"
         },
         {
-          "name": "Get Privacy Policy",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              },
-              {
-                "key": "X-Locale",
-                "value": "{{locale}}"
-              }
-            ],
-            "url": {
-              "raw": "{{base_url}}/privacy",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "privacy"
-              ]
-            },
-            "description": "Returns privacy policy page content."
-          }
+            "key": "sample_equipment_slug",
+            "value": "kl-950-wheel-loader"
         },
         {
-          "name": "Get Terms & Conditions",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              },
-              {
-                "key": "X-Locale",
-                "value": "{{locale}}"
-              }
-            ],
-            "url": {
-              "raw": "{{base_url}}/terms",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "terms"
-              ]
-            },
-            "description": "Returns terms and conditions page content."
-          }
-        },
+            "key": "sample_category_slug",
+            "value": "loaders"
+        }
+    ],
+    "item": [
         {
-          "name": "Get FAQs",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              },
-              {
-                "key": "X-Locale",
-                "value": "{{locale}}"
-              }
-            ],
-            "url": {
-              "raw": "{{base_url}}/faq?page=1&per_page=10",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "faq"
-              ],
-              "query": [
+            "name": "Settings & Content",
+            "description": "",
+            "item": [
                 {
-                  "key": "page",
-                  "value": "1",
-                  "description": "Page number (default: 1)"
+                    "name": "Get Settings",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "X-Locale",
+                                "value": "{{locale}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/settings",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "settings"
+                            ]
+                        },
+                        "description": "Returns global site settings: branding, contact info, social links, SEO meta, logo, and favicon."
+                    },
+                    "response": [
+                        {
+                            "name": "200 OK",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "X-Locale",
+                                        "value": "{{locale}}"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{base_url}}/settings",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "settings"
+                                    ]
+                                },
+                                "description": "Returns global site settings: branding, contact info, social links, SEO meta, logo, and favicon."
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\"code\":200,\"message\":\"Settings retrieved successfully\",\"data\":[{\"name\":\"KEMET\",\"title\":\"KEMET Heavy Machinery | Alpha Sino General Trading\",\"desc\":\"Building trusted industrial partnerships across the Middle East, Africa, and beyond since 2003.\",\"address\":\"Dubai Airport Building, Office 104, Port Said Area, Dubai, UAE\",\"metaKey\":\"KEMET, Alpha Sino, heavy machinery, construction equipment, excavators, loaders, mining equipment, Dubai, UAE, GCC\",\"metaDesc\":\"KEMET by Alpha Sino \\u2014 premium heavy machinery for construction, mining, and industrial sectors. 20+ years of excellence across the GCC and beyond.\",\"phone\":\"+971 58 860 3711\",\"whatsapp\":\"+971 58 860 3711\",\"email\":\"info@dxbalpha.com\",\"support\":\"info@dxbalpha.com\",\"facebook\":\"https:\\/\\/facebook.com\\/kemet\",\"xUrl\":\"https:\\/\\/x.com\\/kemet\",\"youtube\":\"https:\\/\\/youtube.com\\/@kemet\",\"instagram\":\"https:\\/\\/instagram.com\\/kemet\",\"tiktok\":\"https:\\/\\/tiktok.com\\/@kemet\",\"linkedin\":\"https:\\/\\/linkedin.com\\/company\\/kemet\",\"logo\":\"http:\\/\\/127.0.0.1:8000\\/uploads\\/images\\/KEMET Final Logo.png\",\"favicon\":\"http:\\/\\/127.0.0.1:8000\\/uploads\\/images\\/logo.png\",\"copyright\":\"Copyright \\u00a9 2026 KEMET Heavy Machinery.\",\"promotion\":\"\"}]}"
+                        }
+                    ]
                 },
                 {
-                  "key": "per_page",
-                  "value": "10",
-                  "description": "Items per page, max 100 (default: 10)"
-                }
-              ]
-            },
-            "description": "Returns paginated FAQ list. Supports `page` and `per_page` query parameters."
-          }
-        },
-        {
-          "name": "Get Banners",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              },
-              {
-                "key": "X-Locale",
-                "value": "{{locale}}"
-              }
-            ],
-            "url": {
-              "raw": "{{base_url}}/banners",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "banners"
-              ]
-            },
-            "description": "Returns active homepage banners. Returns empty array when no banners are configured."
-          }
-        },
-        {
-          "name": "Get Catalog PDF",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              },
-              {
-                "key": "X-Locale",
-                "value": "{{locale}}"
-              }
-            ],
-            "url": {
-              "raw": "{{base_url}}/catalog",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "catalog"
-              ]
-            },
-            "description": "Returns the downloadable product catalog file URL. Returns empty data when no catalog is uploaded."
-          }
-        }
-      ]
-    },
-    {
-      "name": "Categories",
-      "item": [
-        {
-          "name": "List Categories",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              },
-              {
-                "key": "X-Locale",
-                "value": "{{locale}}"
-              }
-            ],
-            "url": {
-              "raw": "{{base_url}}/categories",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "categories"
-              ]
-            },
-            "description": "Returns all active equipment categories with product counts."
-          }
-        }
-      ]
-    },
-    {
-      "name": "Equipments",
-      "item": [
-        {
-          "name": "Get Catalog Stats",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              },
-              {
-                "key": "X-Locale",
-                "value": "{{locale}}"
-              }
-            ],
-            "url": {
-              "raw": "{{base_url}}/equipments/stats",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "equipments",
-                "stats"
-              ]
-            },
-            "description": "Returns aggregate catalog statistics: total models, categories count, featured units, and in-stock count."
-          }
-        },
-        {
-          "name": "List Equipments",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              },
-              {
-                "key": "X-Locale",
-                "value": "{{locale}}"
-              }
-            ],
-            "url": {
-              "raw": "{{base_url}}/equipments",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "equipments"
-              ]
-            },
-            "description": "Returns all active equipment. Supports optional filters via query parameters."
-          }
-        },
-        {
-          "name": "List Equipments — Featured Loaders",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              },
-              {
-                "key": "X-Locale",
-                "value": "{{locale}}"
-              }
-            ],
-            "url": {
-              "raw": "{{base_url}}/equipments?category_slug=loaders&featured=1",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "equipments"
-              ],
-              "query": [
-                {
-                  "key": "category_slug",
-                  "value": "loaders",
-                  "description": "Filter by category slug (e.g. loaders, excavators)"
+                    "name": "Get About Us",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "X-Locale",
+                                "value": "{{locale}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/about-us",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "about-us"
+                            ]
+                        },
+                        "description": "Returns the About page content (HTML description, banner, image, last updated date)."
+                    },
+                    "response": [
+                        {
+                            "name": "200 OK",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "X-Locale",
+                                        "value": "{{locale}}"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{base_url}}/about-us",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "about-us"
+                                    ]
+                                },
+                                "description": "Returns the About page content (HTML description, banner, image, last updated date)."
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\"code\":200,\"message\":\"About retrieved successfully\",\"data\":{\"banner\":\"http:\\/\\/127.0.0.1:8000\\/uploads\\/images\\/KEMET Final Logo.jpg\",\"title\":\"About Kemet & Alpha Sino\",\"description\":\"<h2>Our Story<\\/h2>\\n<h3>About Kemet &amp; Alpha Sino<\\/h3>\\n<p>Building trusted industrial partnerships across the Middle East, Africa, and beyond since 2003.<\\/p>\\n<h3>Company History<\\/h3>\\n<h4>A Legacy Built On Industrial Trust<\\/h4>\\n<p>Founded in Dubai's Port Said district, Alpha Sino General Trading Co. LLC began as a specialized importer of construction and mining equipment for the rapidly developing UAE market. Two decades of relationship-driven commerce transformed us into one of the region's most recognized heavy machinery distributors.<\\/p>\\n<p>The KEMET brand was born from a simple conviction: the GCC construction and mining sectors deserved purpose-engineered machinery that could withstand extreme heat, continuous heavy-cycle operations, and the logistical demands of remote project sites \\u2014 without compromising operator productivity or machine reliability.<\\/p>\\n<p>Today, KEMET machines are deployed across construction megaprojects, open-pit mining operations, and industrial infrastructure developments spanning the UAE, Saudi Arabia, Egypt, and sub-Saharan Africa.<\\/p>\\n<h3>Our Operational Strengths<\\/h3>\\n<ul>\\n<li><strong>20+ Years of Excellence<\\/strong> \\u2014 Relationship-driven heavy machinery distribution since 2003.<\\/li>\\n<li><strong>100% OEM Parts Availability<\\/strong> \\u2014 Guaranteed genuine components for maximized machine uptime.<\\/li>\\n<li><strong>24\\/7 Engineering Dispatch<\\/strong> \\u2014 Dedicated technical support team active across the entire GCC.<\\/li>\\n<\\/ul>\\n<h3>KEMET by Alpha Sino<\\/h3>\\n<p>Alpha Sino General Trading Co. L.L.C. \\u2014 your trusted partner for premium heavy machinery across construction, mining, and industrial sectors worldwide.<\\/p>\\n<p><strong>Professional<\\/strong> &middot; <strong>Powerful<\\/strong> &middot; <strong>Reliable<\\/strong><\\/p>\\n<h3>Contact<\\/h3>\\n<ul>\\n<li>Dubai Airport Building, Office 104, Port Said Area, Dubai, UAE<\\/li>\\n<li>+971 58 860 3711 (Mobile)<\\/li>\\n<li>+971 58 860 3711 (WhatsApp)<\\/li>\\n<li>info@dxbalpha.com<\\/li>\\n<\\/ul>\\n<h3>Operational Status<\\/h3>\\n<ul>\\n<li><strong>Dubai HQ Dispatch<\\/strong> \\u2014 Mon - Sat: 9:00 AM - 6:00 PM. Sunday Closed.<\\/li>\\n<li><strong>GCC Service Fleet<\\/strong> \\u2014 24\\/7 Emergency Dispatch Active.<\\/li>\\n<\\/ul>\",\"image\":\"http:\\/\\/127.0.0.1:8000\\/uploads\\/images\\/KEMET Final Logo.png\",\"updated_at\":\"2026-06-14\"}}"
+                        }
+                    ]
                 },
                 {
-                  "key": "featured",
-                  "value": "1",
-                  "description": "Filter featured equipment: 1 or 0"
-                }
-              ]
-            },
-            "description": "Example filtered list: featured loaders only."
-          }
-        },
-        {
-          "name": "List Equipments — Search",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              },
-              {
-                "key": "X-Locale",
-                "value": "{{locale}}"
-              }
-            ],
-            "url": {
-              "raw": "{{base_url}}/equipments?search=excavator",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "equipments"
-              ],
-              "query": [
+                    "name": "Get Privacy Policy",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "X-Locale",
+                                "value": "{{locale}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/privacy",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "privacy"
+                            ]
+                        },
+                        "description": "Returns privacy policy page content."
+                    },
+                    "response": [
+                        {
+                            "name": "200 OK",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "X-Locale",
+                                        "value": "{{locale}}"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{base_url}}/privacy",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "privacy"
+                                    ]
+                                },
+                                "description": "Returns privacy policy page content."
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\"code\":200,\"message\":\"Privacy policy retrieved successfully\",\"data\":{\"banner\":\"http:\\/\\/127.0.0.1:8000\\/uploads\\/images\\/KEMET Final Logo.jpg\",\"title\":\"Privacy Policy\",\"description\":\"We protect your personal information and use it only to respond to inquiries, provide services, and improve your experience on our website.\",\"image\":\"http:\\/\\/127.0.0.1:8000\\/uploads\\/images\\/KEMET Final Logo.png\",\"updated_at\":\"2026-06-14\"}}"
+                        }
+                    ]
+                },
                 {
-                  "key": "search",
-                  "value": "excavator",
-                  "description": "Search name, description, slug, series, or SKU"
+                    "name": "Get Terms & Conditions",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "X-Locale",
+                                "value": "{{locale}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/terms",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "terms"
+                            ]
+                        },
+                        "description": "Returns terms and conditions page content."
+                    },
+                    "response": [
+                        {
+                            "name": "200 OK",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "X-Locale",
+                                        "value": "{{locale}}"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{base_url}}/terms",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "terms"
+                                    ]
+                                },
+                                "description": "Returns terms and conditions page content."
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\"code\":200,\"message\":\"Terms and conditions retrieved successfully\",\"data\":{\"banner\":\"http:\\/\\/127.0.0.1:8000\\/uploads\\/images\\/KEMET Final Logo.jpg\",\"title\":\"Terms & Conditions\",\"description\":\"By using Kemet services, you agree to our terms regarding equipment inquiries, quotations, availability, and service delivery.\",\"image\":\"http:\\/\\/127.0.0.1:8000\\/uploads\\/images\\/KEMET Final Logo.png\",\"updated_at\":\"2026-06-14\"}}"
+                        }
+                    ]
+                },
+                {
+                    "name": "Get FAQs",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "X-Locale",
+                                "value": "{{locale}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/faq?page=1&per_page=10",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "faq"
+                            ],
+                            "query": [
+                                {
+                                    "key": "page",
+                                    "value": "1",
+                                    "description": "Page number (default: 1)"
+                                },
+                                {
+                                    "key": "per_page",
+                                    "value": "10",
+                                    "description": "Items per page, max 100 (default: 10)"
+                                }
+                            ]
+                        },
+                        "description": "Returns paginated FAQ list. Supports `page` and `per_page` query parameters."
+                    },
+                    "response": [
+                        {
+                            "name": "200 OK",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "X-Locale",
+                                        "value": "{{locale}}"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{base_url}}/faq?page=1&per_page=10",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "faq"
+                                    ],
+                                    "query": [
+                                        {
+                                            "key": "page",
+                                            "value": "1",
+                                            "description": "Page number (default: 1)"
+                                        },
+                                        {
+                                            "key": "per_page",
+                                            "value": "10",
+                                            "description": "Items per page, max 100 (default: 10)"
+                                        }
+                                    ]
+                                },
+                                "description": "Returns paginated FAQ list. Supports `page` and `per_page` query parameters."
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\"code\":200,\"message\":\"FAQs retrieved successfully\",\"data\":[{\"question\":\"What types of heavy machinery does Kemet offer?\",\"answer\":\"We offer excavators, loaders, bulldozers, cranes, and other construction and industrial equipment.\"},{\"question\":\"Do you provide equipment rental?\",\"answer\":\"Yes. We offer flexible rental options for short-term and long-term project needs.\"},{\"question\":\"How can I request a quote?\",\"answer\":\"Submit your request through the contact form and our team will respond with availability and pricing details.\"}],\"pagination\":{\"total\":3,\"current_page\":1,\"last_page\":1,\"per_page\":10}}"
+                        }
+                    ]
+                },
+                {
+                    "name": "Get Banners",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "X-Locale",
+                                "value": "{{locale}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/banners",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "banners"
+                            ]
+                        },
+                        "description": "Returns active homepage banners. Returns empty array when no banners are configured."
+                    },
+                    "response": [
+                        {
+                            "name": "200 OK",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "X-Locale",
+                                        "value": "{{locale}}"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{base_url}}/banners",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "banners"
+                                    ]
+                                },
+                                "description": "Returns active homepage banners. Returns empty array when no banners are configured."
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\"code\":200,\"message\":\"No banners found\",\"data\":[]}"
+                        }
+                    ]
+                },
+                {
+                    "name": "Get Catalog PDF",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "X-Locale",
+                                "value": "{{locale}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/catalog",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "catalog"
+                            ]
+                        },
+                        "description": "Returns the downloadable product catalog file URL. Returns empty data when no catalog is uploaded."
+                    },
+                    "response": [
+                        {
+                            "name": "200 OK",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "X-Locale",
+                                        "value": "{{locale}}"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{base_url}}/catalog",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "catalog"
+                                    ]
+                                },
+                                "description": "Returns the downloadable product catalog file URL. Returns empty data when no catalog is uploaded."
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\"code\":200,\"message\":\"No catalog found\",\"data\":[]}"
+                        }
+                    ]
                 }
-              ]
-            },
-            "description": "Example search across name, description, slug, series, and SKU."
-          }
+            ]
         },
         {
-          "name": "Get Equipment by Slug",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              },
-              {
-                "key": "X-Locale",
-                "value": "{{locale}}"
-              }
-            ],
-            "url": {
-              "raw": "{{base_url}}/equipments/{{sample_equipment_slug}}",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "equipments",
-                "{{sample_equipment_slug}}"
-              ]
-            },
-            "description": "Returns full equipment details including features, highlights, specifications, images, and category."
-          }
+            "name": "Categories",
+            "description": "",
+            "item": [
+                {
+                    "name": "List Categories",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "X-Locale",
+                                "value": "{{locale}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/categories",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "categories"
+                            ]
+                        },
+                        "description": "Returns all active equipment categories with product counts."
+                    },
+                    "response": [
+                        {
+                            "name": "200 OK",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "X-Locale",
+                                        "value": "{{locale}}"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{base_url}}/categories",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "categories"
+                                    ]
+                                },
+                                "description": "Returns all active equipment categories with product counts."
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\"code\":200,\"message\":\"Categories retrieved successfully\",\"data\":[{\"id\":1,\"name\":\"Agricultural Machinery\",\"description\":\"Advanced agricultural machinery and equipment for farming operations, crop management, and field productivity.\",\"slug\":\"agricultural-machinery\",\"image\":null,\"products_count\":1},{\"id\":2,\"name\":\"Heavy Machinery\",\"description\":\"A comprehensive range of heavy machinery designed for construction, mining, earthmoving, and industrial operations.\",\"slug\":\"heavy-machinery\",\"image\":null,\"products_count\":9}]}"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Equipments",
+            "description": "",
+            "item": [
+                {
+                    "name": "Get Catalog Stats",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "X-Locale",
+                                "value": "{{locale}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/equipments/stats",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "equipments",
+                                "stats"
+                            ]
+                        },
+                        "description": "Returns aggregate catalog statistics: total_models, categories_count, new_units (featured), and active_stock (in_stock)."
+                    },
+                    "response": [
+                        {
+                            "name": "200 OK",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "X-Locale",
+                                        "value": "{{locale}}"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{base_url}}/equipments/stats",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "equipments",
+                                        "stats"
+                                    ]
+                                },
+                                "description": "Returns aggregate catalog statistics: total_models, categories_count, new_units (featured), and active_stock (in_stock)."
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\"code\":200,\"message\":\"Equipment stats retrieved successfully\",\"data\":{\"total_models\":10,\"categories_count\":2,\"new_units\":5,\"active_stock\":10}}"
+                        }
+                    ]
+                },
+                {
+                    "name": "List Equipments",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "X-Locale",
+                                "value": "{{locale}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/equipments",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "equipments"
+                            ]
+                        },
+                        "description": "Returns all active equipment with card_specs (category-defined attributes). Supports optional filters via query parameters."
+                    },
+                    "response": [
+                        {
+                            "name": "200 OK",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "X-Locale",
+                                        "value": "{{locale}}"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{base_url}}/equipments",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "equipments"
+                                    ]
+                                },
+                                "description": "Returns all active equipment with card_specs (category-defined attributes). Supports optional filters via query parameters."
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\"code\":200,\"message\":\"Equipments retrieved successfully\",\"data\":[{\"id\":10,\"name\":\"AR Series Agricultural Tractor\",\"slug\":\"ar-series-agricultural-tractor\",\"series\":\"AR SERIES \\u2014 2026\",\"description\":\"Versatile agricultural tractor with advanced transmission for field and site support.\",\"stock_status\":\"in_stock\",\"stock_status_label\":\"In Stock\",\"image\":\"\\/media\\/uploads\\/equipments\\/seed\\/ar-series-agricultural-tractor.jpg\",\"images\":[\"\\/media\\/uploads\\/equipments\\/seed\\/ar-series-agricultural-tractor.jpg\"],\"spec_sheet\":null,\"is_featured\":false,\"card_specs\":[{\"key\":\"horsepower\",\"label\":\"Horsepower\",\"value\":\"20-30 HP\"},{\"key\":\"transmission\",\"label\":\"Transmission\",\"value\":\"Advanced System\"}],\"category\":{\"id\":1,\"name\":\"Agricultural Machinery\",\"description\":\"Advanced agricultural machinery and equipment for farming operations, crop management, and field productivity.\",\"slug\":\"agricultural-machinery\",\"image\":null,\"products_count\":0}},{\"id\":1,\"name\":\"KL-950 Wheel Loader\",\"slug\":\"kl-950-wheel-loader\",\"series\":\"KL-950 \\u2014 2026 SERIES\",\"description\":\"Heavy-duty wheel loader engineered for high-capacity material handling and extreme industrial loading cycles.\",\"stock_status\":\"in_stock\",\"stock_status_label\":\"In Stock\",\"image\":\"\\/media\\/uploads\\/equipments\\/seed\\/kl-950-wheel-loader.jpg\",\"images\":[\"\\/media\\/uploads\\/equipments\\/seed\\/kl-950-wheel-loader.jpg\"],\"spec_sheet\":null,\"is_featured\":true,\"card_specs\":[{\"key\":\"operating_weight\",\"label\":\"Operating Weight\",\"value\":\"21,000 kg\"},{\"key\":\"engine_power\",\"label\":\"Engine Power\",\"value\":\"162 kW\"}],\"category\":{\"id\":2,\"name\":\"Heavy Machinery\",\"description\":\"A comprehensive range of heavy machinery designed for construction, mining, earthmoving, and industrial operations.\",\"slug\":\"heavy-machinery\",\"image\":null,\"products_count\":0}},{\"id\":2,\"name\":\"KL-860 Wheel Loader\",\"slug\":\"kl-860-wheel-loader\",\"series\":\"KL-860 \\u2014 2025 SERIES\",\"description\":\"Mid-size wheel loader optimized for quarry operations and bulk material movement.\",\"stock_status\":\"in_stock\",\"stock_status_label\":\"In Stock\",\"image\":\"\\/media\\/uploads\\/equipments\\/seed\\/kl-860-wheel-loader.jpg\",\"images\":[\"\\/media\\/uploads\\/equipments\\/seed\\/kl-860-wheel-loader.jpg\"],\"spec_sheet\":null,\"is_featured\":false,\"card_specs\":[{\"key\":\"operating_weight\",\"label\":\"Operating Weight\",\"value\":\"17,100 kg\"},{\"key\":\"engine_power\",\"label\":\"Engine Power\",\"value\":\"140 kW\"}],\"category\":{\"id\":2,\"name\":\"Heavy Machinery\",\"description\":\"A comprehensive range of heavy machinery designed for construction, mining, earthmoving, and industrial operations.\",\"slug\":\"heavy-machinery\",\"image\":null,\"products_count\":0}},{\"id\":3,\"name\":\"KL-720 Compact Loader\",\"slug\":\"kl-720-compact-loader\",\"series\":\"KL-720 \\u2014 2024 SERIES\",\"description\":\"Compact loader built for tight job sites with excellent maneuverability and fuel efficiency.\",\"stock_status\":\"in_stock\",\"stock_status_label\":\"In Stock\",\"image\":\"\\/media\\/uploads\\/equipments\\/seed\\/kl-720-compact-loader.jpg\",\"images\":[\"\\/media\\/uploads\\/equipments\\/seed\\/kl-720-compact-loader.jpg\"],\"spec_sheet\":null,\"is_featured\":false,\"card_specs\":[{\"key\":\"operating_weight\",\"label\":\"Operating Weight\",\"value\":\"8,350 kg\"},{\"key\":\"engine_power\",\"label\":\"Engine Power\",\"value\":\"74.5 kW\"}],\"category\":{\"id\":2,\"name\":\"Heavy Machinery\",\"description\":\"A comprehensive range of heavy machinery designed for construction, mining, earthmoving, and industrial operations.\",\"slug\":\"heavy-machinery\",\"image\":null,\"products_count\":0}},{\"id\":4,\"name\":\"KL-1100 Heavy Loader\",\"slug\":\"kl-1100-heavy-loader\",\"series\":\"KL-1100 \\u2014 2026 SERIES\",\"description\":\"Ultra-heavy wheel loader for mining and large-scale earthmoving projects.\",\"stock_status\":\"in_stock\",\"stock_status_label\":\"In Stock\",\"image\":\"\\/media\\/uploads\\/equipments\\/seed\\/kl-1100-heavy-loader.jpg\",\"images\":[\"\\/media\\/uploads\\/equipments\\/seed\\/kl-1100-heavy-loader.jpg\"],\"spec_sheet\":null,\"is_featured\":true,\"card_specs\":[{\"key\":\"operating_weight\",\"label\":\"Operating Weight\",\"value\":\"28,500 kg\"},{\"key\":\"engine_power\",\"label\":\"Engine Power\",\"value\":\"220 kW\"}],\"category\":{\"id\":2,\"name\":\"Heavy Machinery\",\"description\":\"A comprehensive range of heavy machinery designed for construction, mining, earthmoving, and industrial operations.\",\"slug\":\"heavy-machinery\",\"image\":null,\"products_count\":0}},{\"id\":5,\"name\":\"KE-210 Hydraulic Excavator\",\"slug\":\"ke-210-hydraulic-excavator\",\"series\":\"KE-210 \\u2014 2026 SERIES\",\"description\":\"Precision hydraulic excavator for deep trenching, demolition, and heavy excavation work.\",\"stock_status\":\"in_stock\",\"stock_status_label\":\"In Stock\",\"image\":\"\\/media\\/uploads\\/equipments\\/seed\\/ke-210-hydraulic-excavator.jpg\",\"images\":[\"\\/media\\/uploads\\/equipments\\/seed\\/ke-210-hydraulic-excavator.jpg\"],\"spec_sheet\":null,\"is_featured\":true,\"card_specs\":[{\"key\":\"operating_weight\",\"label\":\"Operating Weight\",\"value\":\"21,200 kg\"},{\"key\":\"engine_power\",\"label\":\"Engine Power\",\"value\":\"112 kW\"}],\"category\":{\"id\":2,\"name\":\"Heavy Machinery\",\"description\":\"A comprehensive range of heavy machinery designed for construction, mining, earthmoving, and industrial operations.\",\"slug\":\"heavy-machinery\",\"image\":null,\"products_count\":0}},{\"id\":6,\"name\":\"KE-320 Crawler Excavator\",\"slug\":\"ke-320-crawler-excavator\",\"series\":\"KE-320 \\u2014 2025 SERIES\",\"description\":\"Crawler excavator with extended reach for infrastructure and pipeline projects.\",\"stock_status\":\"in_stock\",\"stock_status_label\":\"In Stock\",\"image\":\"\\/media\\/uploads\\/equipments\\/seed\\/ke-320-crawler-excavator.jpg\",\"images\":[\"\\/media\\/uploads\\/equipments\\/seed\\/ke-320-crawler-excavator.jpg\"],\"spec_sheet\":null,\"is_featured\":false,\"card_specs\":[{\"key\":\"operating_weight\",\"label\":\"Operating Weight\",\"value\":\"32,000 kg\"},{\"key\":\"engine_power\",\"label\":\"Engine Power\",\"value\":\"180 kW\"}],\"category\":{\"id\":2,\"name\":\"Heavy Machinery\",\"description\":\"A comprehensive range of heavy machinery designed for construction, mining, earthmoving, and industrial operations.\",\"slug\":\"heavy-machinery\",\"image\":null,\"products_count\":0}},{\"id\":7,\"name\":\"KG-160 Motor Grader\",\"slug\":\"kg-160-motor-grader\",\"series\":\"KG-160 \\u2014 2026 SERIES\",\"description\":\"Motor grader designed for precision road leveling and surface finishing.\",\"stock_status\":\"in_stock\",\"stock_status_label\":\"In Stock\",\"image\":\"\\/media\\/uploads\\/equipments\\/seed\\/kg-160-motor-grader.jpg\",\"images\":[\"\\/media\\/uploads\\/equipments\\/seed\\/kg-160-motor-grader.jpg\"],\"spec_sheet\":null,\"is_featured\":false,\"card_specs\":[{\"key\":\"operating_weight\",\"label\":\"Operating Weight\",\"value\":\"12,500 kg\"},{\"key\":\"engine_power\",\"label\":\"Engine Power\",\"value\":\"125 kW\"}],\"category\":{\"id\":2,\"name\":\"Heavy Machinery\",\"description\":\"A comprehensive range of heavy machinery designed for construction, mining, earthmoving, and industrial operations.\",\"slug\":\"heavy-machinery\",\"image\":null,\"products_count\":0}},{\"id\":8,\"name\":\"KG-220 Road Grader\",\"slug\":\"kg-220-road-grader\",\"series\":\"KG-220 \\u2014 2025 SERIES\",\"description\":\"Heavy road grader for highway construction and large grading operations.\",\"stock_status\":\"in_stock\",\"stock_status_label\":\"In Stock\",\"image\":\"\\/media\\/uploads\\/equipments\\/seed\\/kg-220-road-grader.jpg\",\"images\":[\"\\/media\\/uploads\\/equipments\\/seed\\/kg-220-road-grader.jpg\"],\"spec_sheet\":null,\"is_featured\":true,\"card_specs\":[{\"key\":\"operating_weight\",\"label\":\"Operating Weight\",\"value\":\"18,700 kg\"},{\"key\":\"engine_power\",\"label\":\"Engine Power\",\"value\":\"160 kW\"}],\"category\":{\"id\":2,\"name\":\"Heavy Machinery\",\"description\":\"A comprehensive range of heavy machinery designed for construction, mining, earthmoving, and industrial operations.\",\"slug\":\"heavy-machinery\",\"image\":null,\"products_count\":0}},{\"id\":9,\"name\":\"KM-450 Mining Dump Truck\",\"slug\":\"km-450-mining-dump-truck\",\"series\":\"KM-450 \\u2014 2026 SERIES\",\"description\":\"Mining dump truck built for extreme payload capacity and rugged haul cycles.\",\"stock_status\":\"in_stock\",\"stock_status_label\":\"In Stock\",\"image\":\"\\/media\\/uploads\\/equipments\\/seed\\/km-450-mining-dump-truck.jpg\",\"images\":[\"\\/media\\/uploads\\/equipments\\/seed\\/km-450-mining-dump-truck.jpg\"],\"spec_sheet\":null,\"is_featured\":true,\"card_specs\":[{\"key\":\"operating_weight\",\"label\":\"Operating Weight\",\"value\":\"68,000 kg\"},{\"key\":\"engine_power\",\"label\":\"Engine Power\",\"value\":\"350 kW\"}],\"category\":{\"id\":2,\"name\":\"Heavy Machinery\",\"description\":\"A comprehensive range of heavy machinery designed for construction, mining, earthmoving, and industrial operations.\",\"slug\":\"heavy-machinery\",\"image\":null,\"products_count\":0}}]}"
+                        }
+                    ]
+                },
+                {
+                    "name": "List Equipments — Featured Loaders",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "X-Locale",
+                                "value": "{{locale}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/equipments?category_slug=loaders&featured=1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "equipments"
+                            ],
+                            "query": [
+                                {
+                                    "key": "category_slug",
+                                    "value": "loaders",
+                                    "description": "Filter by category slug (e.g. loaders, excavators)"
+                                },
+                                {
+                                    "key": "featured",
+                                    "value": "1",
+                                    "description": "Filter featured equipment: 1 or 0"
+                                }
+                            ]
+                        },
+                        "description": "Example filtered list: featured loaders only."
+                    },
+                    "response": [
+                        {
+                            "name": "200 OK",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "X-Locale",
+                                        "value": "{{locale}}"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{base_url}}/equipments?category_slug=loaders&featured=1",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "equipments"
+                                    ],
+                                    "query": [
+                                        {
+                                            "key": "category_slug",
+                                            "value": "loaders",
+                                            "description": "Filter by category slug (e.g. loaders, excavators)"
+                                        },
+                                        {
+                                            "key": "featured",
+                                            "value": "1",
+                                            "description": "Filter featured equipment: 1 or 0"
+                                        }
+                                    ]
+                                },
+                                "description": "Example filtered list: featured loaders only."
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\"code\":200,\"message\":\"No equipments found\",\"data\":[]}"
+                        }
+                    ]
+                },
+                {
+                    "name": "List Equipments — Search",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "X-Locale",
+                                "value": "{{locale}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/equipments?search=excavator",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "equipments"
+                            ],
+                            "query": [
+                                {
+                                    "key": "search",
+                                    "value": "excavator",
+                                    "description": "Search name, description, slug, series, or SKU"
+                                }
+                            ]
+                        },
+                        "description": "Example search across name, description, slug, series, and SKU."
+                    },
+                    "response": [
+                        {
+                            "name": "200 OK",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "X-Locale",
+                                        "value": "{{locale}}"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{base_url}}/equipments?search=excavator",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "equipments"
+                                    ],
+                                    "query": [
+                                        {
+                                            "key": "search",
+                                            "value": "excavator",
+                                            "description": "Search name, description, slug, series, or SKU"
+                                        }
+                                    ]
+                                },
+                                "description": "Example search across name, description, slug, series, and SKU."
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\"code\":200,\"message\":\"Equipments retrieved successfully\",\"data\":[{\"id\":5,\"name\":\"KE-210 Hydraulic Excavator\",\"slug\":\"ke-210-hydraulic-excavator\",\"series\":\"KE-210 \\u2014 2026 SERIES\",\"description\":\"Precision hydraulic excavator for deep trenching, demolition, and heavy excavation work.\",\"stock_status\":\"in_stock\",\"stock_status_label\":\"In Stock\",\"image\":\"\\/media\\/uploads\\/equipments\\/seed\\/ke-210-hydraulic-excavator.jpg\",\"images\":[\"\\/media\\/uploads\\/equipments\\/seed\\/ke-210-hydraulic-excavator.jpg\"],\"spec_sheet\":null,\"is_featured\":true,\"card_specs\":[{\"key\":\"operating_weight\",\"label\":\"Operating Weight\",\"value\":\"21,200 kg\"},{\"key\":\"engine_power\",\"label\":\"Engine Power\",\"value\":\"112 kW\"}],\"category\":{\"id\":2,\"name\":\"Heavy Machinery\",\"description\":\"A comprehensive range of heavy machinery designed for construction, mining, earthmoving, and industrial operations.\",\"slug\":\"heavy-machinery\",\"image\":null,\"products_count\":0}},{\"id\":6,\"name\":\"KE-320 Crawler Excavator\",\"slug\":\"ke-320-crawler-excavator\",\"series\":\"KE-320 \\u2014 2025 SERIES\",\"description\":\"Crawler excavator with extended reach for infrastructure and pipeline projects.\",\"stock_status\":\"in_stock\",\"stock_status_label\":\"In Stock\",\"image\":\"\\/media\\/uploads\\/equipments\\/seed\\/ke-320-crawler-excavator.jpg\",\"images\":[\"\\/media\\/uploads\\/equipments\\/seed\\/ke-320-crawler-excavator.jpg\"],\"spec_sheet\":null,\"is_featured\":false,\"card_specs\":[{\"key\":\"operating_weight\",\"label\":\"Operating Weight\",\"value\":\"32,000 kg\"},{\"key\":\"engine_power\",\"label\":\"Engine Power\",\"value\":\"180 kW\"}],\"category\":{\"id\":2,\"name\":\"Heavy Machinery\",\"description\":\"A comprehensive range of heavy machinery designed for construction, mining, earthmoving, and industrial operations.\",\"slug\":\"heavy-machinery\",\"image\":null,\"products_count\":0}}]}"
+                        }
+                    ]
+                },
+                {
+                    "name": "Get Equipment by Slug",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "X-Locale",
+                                "value": "{{locale}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/equipments/{{sample_equipment_slug}}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "equipments",
+                                "{{sample_equipment_slug}}"
+                            ]
+                        },
+                        "description": "Returns full equipment details including category-defined features, highlights, specifications, images, stock status, and category."
+                    },
+                    "response": [
+                        {
+                            "name": "200 OK",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "X-Locale",
+                                        "value": "{{locale}}"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{base_url}}/equipments/{{sample_equipment_slug}}",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "equipments",
+                                        "{{sample_equipment_slug}}"
+                                    ]
+                                },
+                                "description": "Returns full equipment details including category-defined features, highlights, specifications, images, stock status, and category."
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\"code\":200,\"message\":\"Equipment retrieved successfully\",\"data\":{\"id\":1,\"name\":\"KL-950 Wheel Loader\",\"slug\":\"kl-950-wheel-loader\",\"series\":\"KL-950 \\u2014 2026 SERIES\",\"sku\":\"KEMET-KL950\",\"description\":\"Heavy-duty wheel loader engineered for high-capacity material handling and extreme industrial loading cycles.\",\"long_description\":\"Heavy-duty wheel loader engineered for high-capacity material handling and extreme industrial loading cycles.\",\"stock_status\":\"in_stock\",\"stock_status_label\":\"In Stock\",\"features\":[{\"key\":\"high_power_output\",\"label\":\"High Power Output\"},{\"key\":\"oem_certified\",\"label\":\"OEM Certified\"},{\"key\":\"gcc_ready\",\"label\":\"GCC Ready\"},{\"key\":\"full_warranty\",\"label\":\"Full Warranty\"}],\"highlights\":[{\"key\":\"operating_weight\",\"label\":\"Operating Weight\",\"value\":\"21,000 kg\"},{\"key\":\"engine_power\",\"label\":\"Engine Power\",\"value\":\"162 kW\"},{\"key\":\"bucket_capacity\",\"label\":\"Bucket Capacity\",\"value\":\"3.2 m\\u00b3\"},{\"key\":\"payload_weight\",\"label\":\"Payload Weight\",\"value\":\"5,000 kg\"}],\"specifications\":[{\"key\":\"engine_model\",\"label\":\"Engine Model\",\"value\":\"KEMET KL950\"},{\"key\":\"max_travel_speed\",\"label\":\"Max Travel Speed\",\"value\":\"38 km\\/h\"},{\"key\":\"hydraulic_flow\",\"label\":\"Hydraulic Flow\",\"value\":\"220 L\\/min\"},{\"key\":\"fuel_tank_capacity\",\"label\":\"Fuel Tank Capacity\",\"value\":\"300 L\"}],\"image\":\"\\/media\\/uploads\\/equipments\\/seed\\/kl-950-wheel-loader.jpg\",\"images\":[\"\\/media\\/uploads\\/equipments\\/seed\\/kl-950-wheel-loader.jpg\"],\"spec_sheet\":null,\"is_featured\":true,\"category\":{\"id\":2,\"name\":\"Heavy Machinery\",\"description\":\"A comprehensive range of heavy machinery designed for construction, mining, earthmoving, and industrial operations.\",\"slug\":\"heavy-machinery\",\"image\":null,\"products_count\":0}}}"
+                        }
+                    ]
+                },
+                {
+                    "name": "Get Equipment — Not Found",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "X-Locale",
+                                "value": "{{locale}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/equipments/invalid-slug",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "equipments",
+                                "invalid-slug"
+                            ]
+                        },
+                        "description": "Example 404 response when equipment slug does not exist or is inactive."
+                    },
+                    "response": [
+                        {
+                            "name": "404 Not Found",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "X-Locale",
+                                        "value": "{{locale}}"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{base_url}}/equipments/invalid-slug",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "equipments",
+                                        "invalid-slug"
+                                    ]
+                                },
+                                "description": "Example 404 response when equipment slug does not exist or is inactive."
+                            },
+                            "status": "Not Found",
+                            "code": 404,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\"code\":404,\"message\":\"Equipment not found\",\"data\":[]}"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Forms",
+            "description": "",
+            "item": [
+                {
+                    "name": "Submit Contact Form",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "X-Locale",
+                                "value": "{{locale}}"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/contact",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "contact"
+                            ]
+                        },
+                        "description": "Submit a general contact/inquiry message.\n\nRequired fields: `name`, `email`, `phone`, `subject`, `message`.",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"Ahmed Ali\",\n    \"email\": \"ahmed@example.com\",\n    \"phone\": \"+971501234567\",\n    \"subject\": \"Equipment Inquiry\",\n    \"message\": \"Please send me a quote for excavators.\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "201 Created",
+                            "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "X-Locale",
+                                        "value": "{{locale}}"
+                                    },
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{base_url}}/contact",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "contact"
+                                    ]
+                                },
+                                "description": "Submit a general contact/inquiry message.\n\nRequired fields: `name`, `email`, `phone`, `subject`, `message`.",
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"name\": \"Ahmed Ali\",\n    \"email\": \"ahmed@example.com\",\n    \"phone\": \"+971501234567\",\n    \"subject\": \"Equipment Inquiry\",\n    \"message\": \"Please send me a quote for excavators.\"\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                }
+                            },
+                            "status": "Created",
+                            "code": 201,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\"code\":201,\"message\":\"Message sent successfully\",\"data\":[]}"
+                        }
+                    ]
+                },
+                {
+                    "name": "Submit Contact — Validation Error",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "X-Locale",
+                                "value": "{{locale}}"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/contact",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "contact"
+                            ]
+                        },
+                        "description": "Example 422 validation error when required fields are missing.",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "422 Validation Error",
+                            "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "X-Locale",
+                                        "value": "{{locale}}"
+                                    },
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{base_url}}/contact",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "contact"
+                                    ]
+                                },
+                                "description": "Example 422 validation error when required fields are missing.",
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                }
+                            },
+                            "status": "Unprocessable Entity",
+                            "code": 422,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\"code\":422,\"message\":\"Validation Error\",\"data\":{\"name\":[\"The Name field is required.\"],\"email\":[\"The Email field is required.\"],\"phone\":[\"The Phone field is required.\"],\"subject\":[\"The Subject field is required.\"],\"message\":[\"The Message field is required.\"]}}"
+                        }
+                    ]
+                },
+                {
+                    "name": "Submit Consultation Request",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "X-Locale",
+                                "value": "{{locale}}"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/consultation",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "consultation"
+                            ]
+                        },
+                        "description": "Submit an equipment consultation request.\n\nRequired: `full_name`, `corporate_email`, `phone`, `message`.\nOptional: `category_id`, `category_slug`, `equipment_id`, `equipment_slug`.",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"full_name\": \"John Smith\",\n    \"corporate_email\": \"john@company.com\",\n    \"phone\": \"+971501234567\",\n    \"message\": \"Interested in KL-950 wheel loader for a mining project.\",\n    \"equipment_slug\": \"kl-950-wheel-loader\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "201 Created",
+                            "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "X-Locale",
+                                        "value": "{{locale}}"
+                                    },
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{base_url}}/consultation",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "consultation"
+                                    ]
+                                },
+                                "description": "Submit an equipment consultation request.\n\nRequired: `full_name`, `corporate_email`, `phone`, `message`.\nOptional: `category_id`, `category_slug`, `equipment_id`, `equipment_slug`.",
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"full_name\": \"John Smith\",\n    \"corporate_email\": \"john@company.com\",\n    \"phone\": \"+971501234567\",\n    \"message\": \"Interested in KL-950 wheel loader for a mining project.\",\n    \"equipment_slug\": \"kl-950-wheel-loader\"\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                }
+                            },
+                            "status": "Created",
+                            "code": 201,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\"code\":201,\"message\":\"Consultation request submitted successfully\",\"data\":[]}"
+                        }
+                    ]
+                },
+                {
+                    "name": "Submit Consultation — Validation Error",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "X-Locale",
+                                "value": "{{locale}}"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/consultation",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "consultation"
+                            ]
+                        },
+                        "description": "Example 422 validation error when required fields are missing.",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "422 Validation Error",
+                            "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "X-Locale",
+                                        "value": "{{locale}}"
+                                    },
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{base_url}}/consultation",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "consultation"
+                                    ]
+                                },
+                                "description": "Example 422 validation error when required fields are missing.",
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                }
+                            },
+                            "status": "Unprocessable Entity",
+                            "code": 422,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\"code\":422,\"message\":\"Validation Error\",\"data\":{\"full_name\":[\"The full name field is required.\"],\"corporate_email\":[\"The corporate email field is required.\"],\"phone\":[\"The Phone field is required.\"],\"message\":[\"The Message field is required.\"]}}"
+                        }
+                    ]
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }
